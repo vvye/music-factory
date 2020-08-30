@@ -11,4 +11,8 @@ class EmptyModule extends Module {
         rect(this.pos.x, this.pos.y, 64, 64);
     }
 
+    handleBall(ball) {
+
+    }
+
 }
