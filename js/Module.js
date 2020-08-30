@@ -1,8 +1,10 @@
 class Module {
 
     pos;
+    color;
 
     constructor(x, y) {
+        this.color = 255;
         this.pos = createVector(x, y);
     }
 
@@ -11,8 +13,12 @@ class Module {
 
     draw() {
         noStroke();
-        fill(255, 0, 255);
+        fill(255, 0, this.color);
         rect(this.pos.x, this.pos.y, 64, 64);
+    }
+
+    handleBall(ball) {
+        ball.speed = createVector(ball.speed.y, ball.speed.x);
     }
 
 }

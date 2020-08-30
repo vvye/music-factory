@@ -1,12 +1,23 @@
-let modules = [];
+let grid;
 let balls = [];
+let modules = [];
 
+function addModule(module) {
+    modules.push(module);
+    grid.add(module);
+}
+
+
+function preload() {
+    grid = new Grid(9, 12, 64);
+}
 
 function setup() {
-    createCanvas(800, 600);
-    modules.push(new Module(128, 128));
-    modules.push(new Module(256, 64));
-    balls.push(new Ball(0, 128));
+    createCanvas(grid.width(), grid.height());
+
+    addModule(new Module(64, 64));
+    addModule(new Module(128, 192));
+    balls.push(new Ball(0, 160));
 }
 
 function draw() {
@@ -19,4 +30,8 @@ function draw() {
         ball.update();
         ball.draw();
     }
+}
+
+function mousePressed() {
+    addModule(new Module(int(mouseX / grid.cellSize) * grid.cellSize, int(mouseY / grid.cellSize) * grid.cellSize));
 }

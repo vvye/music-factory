@@ -5,7 +5,7 @@ class Ball {
 
     constructor(x, y) {
         this.pos = createVector(x, y);
-        this.speed = createVector(3, 0);
+        this.speed = createVector(4, 0);
     }
 
     update() {
@@ -15,7 +15,12 @@ class Ball {
     draw() {
         noStroke();
         fill(255);
-        circle(this.pos.x, this.pos.y, 10);
+        circle(this.pos.x, this.pos.y, 20);
+    }
+
+    currentModule(modules) {
+        let gridPos = createVector(int(this.pos.x / 64) * 64, int(this.pos.y / 64) * 64);
+        return modules[gridPos] || null;
     }
 
 }
