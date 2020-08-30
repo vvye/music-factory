@@ -31,9 +31,4 @@ class Ball {
         circle(this.pos.x, this.pos.y, 20);
     }
 
-    currentModule(modules) {
-        let gridPos = createVector(int(this.pos.x / 64) * 64, int(this.pos.y / 64) * 64);
-        return modules[gridPos] || null;
-    }
-
 }
