@@ -18,6 +18,7 @@ class Module {
     }
 
     handleBall(ball) {
+        ball.resetLifetime();
         ball.speed.x *= -1;
     }
 

@@ -21,6 +21,10 @@ function draw() {
     }
     for (let ball of balls) {
         ball.update();
+        if (ball.dead()) {
+            balls.splice(balls.indexOf(ball), 1);
+            continue;
+        }
         ball.draw();
         let module = grid.moduleAt(ball.pos.x, ball.pos.y);
         if (module) {
