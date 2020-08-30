@@ -1,4 +1,4 @@
-const BallLifetime = 50;
+const BallLifetime = 25;
 
 class Ball {
 
