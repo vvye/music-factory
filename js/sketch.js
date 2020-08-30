@@ -4,7 +4,7 @@ let modules = [];
 
 function addModule(module) {
     modules.push(module);
-    grid.add(module);
+    grid.addModule(module);
 }
 
 
@@ -29,6 +29,10 @@ function draw() {
     for (let ball of balls) {
         ball.update();
         ball.draw();
+        let module = grid.moduleAt(ball.pos.x, ball.pos.y);
+        if (module) {
+            module.handleBall(ball);
+        }
     }
 }
 

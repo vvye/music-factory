@@ -18,7 +18,7 @@ class Module {
     }
 
     handleBall(ball) {
-        ball.speed = createVector(ball.speed.y, ball.speed.x);
+        ball.speed.x *= -1;
     }
 
 }

@@ -27,10 +27,16 @@ class Grid {
         return this.rows * this.cellSize;
     }
 
-    add(module) {
+    addModule(module) {
         let row = int(module.pos.y / this.cellSize);
         let col = int(module.pos.x / this.cellSize);
         this.grid[row][col] = module;
+    }
+
+    moduleAt(x, y) {
+        let row = int(y / this.cellSize);
+        let col = int(x / this.cellSize);
+        return this.grid[row][col];
     }
 
 }
