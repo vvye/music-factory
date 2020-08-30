@@ -1,26 +1,21 @@
 class Ball {
 
-    x;
-    y;
-    xSpeed;
-    ySpeed;
+    pos;
+    speed;
 
     constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.xSpeed = 3;
-        this.ySpeed = 0;
+        this.pos = createVector(x, y);
+        this.speed = createVector(3, 0);
     }
 
     update() {
-        this.x += this.xSpeed;
-        this.y += this.ySpeed;
+        this.pos.add(this.speed)
     }
 
     draw() {
         noStroke();
         fill(255);
-        circle(this.x, this.y, 10);
+        circle(this.pos.x, this.pos.y, 10);
     }
 
 }

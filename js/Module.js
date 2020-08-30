@@ -1,11 +1,9 @@
 class Module {
 
-    x;
-    y;
+    pos;
 
     constructor(x, y) {
-        this.x = x;
-        this.y = y;
+        this.pos = createVector(x, y);
     }
 
     update() {
@@ -14,7 +12,7 @@ class Module {
     draw() {
         noStroke();
         fill(255, 0, 255);
-        rect(this.x, this.y, 64, 64);
+        rect(this.pos.x, this.pos.y, 64, 64);
     }
 
 }
