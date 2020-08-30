@@ -14,7 +14,13 @@ class Module {
     draw() {
     }
 
-    handleBall(ball) {
+    onBallEnter(ball) {
+    }
+
+    onBallInside(ball) {
+    }
+
+    onBallLeave(ball) {
     }
 
 }
