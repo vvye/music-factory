@@ -1,7 +1,7 @@
 class EmptyModule extends Module {
 
-    constructor(row, col) {
-        super(row, col);
+    constructor() {
+        super();
     }
 
     draw() {
@@ -9,10 +9,6 @@ class EmptyModule extends Module {
         strokeWeight(1);
         noFill()
         rect(this.pos.x, this.pos.y, 64, 64);
-    }
-
-    handleBall(ball) {
-
     }
 
 }

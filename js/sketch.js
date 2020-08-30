@@ -11,9 +11,15 @@ function setup() {
 
     createCanvas(grid.width(), grid.height());
 
-    grid.addModule(new Module(), 64, 64);
-    grid.addModule(new Module(), 128, 192);
-    balls.push(new Ball(0, 160));
+    grid.addModule(new HorzPipeModule(), 64, 128);
+    grid.addModule(new HorzPipeModule(), 128, 128);
+    grid.addModule(new HorzPipeModule(), 192, 128);
+    grid.addModule(new VertPipeModule(), 256, 128);
+    grid.addModule(new VertPipeModule(), 256, 192);
+    grid.addModule(new VertPipeModule(), 256, 256);
+    grid.addModule(new HorzPipeModule(), 256, 320);
+    balls.push(new Ball(0, 160, 4, 0));
+    balls.push(new Ball(288, 128, 0, 4));
 
 }
 
@@ -44,5 +50,5 @@ function draw() {
 
 
 function mousePressed() {
-    grid.addModule(new Module(), mouseX, mouseY);
+    grid.addModule(new HorzPipeModule(), mouseX, mouseY);
 }

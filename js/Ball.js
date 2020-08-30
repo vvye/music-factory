@@ -6,9 +6,9 @@ class Ball {
     speed;
     lifetime;
 
-    constructor(x, y) {
+    constructor(x, y, xSpeed, ySpeed) {
         this.pos = createVector(x, y);
-        this.speed = createVector(4, 0);
+        this.speed = createVector(xSpeed, ySpeed);
         this.lifetime = BallLifetime;
     }
 

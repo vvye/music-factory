@@ -3,22 +3,18 @@ class Module {
     pos;
     color;
 
-    constructor(x, y) {
+    constructor() {
         this.color = 255;
-        this.pos = createVector(x, y);
+        this.pos = createVector();
     }
 
     update() {
     }
 
     draw() {
-        noStroke();
-        fill(255, 0, this.color);
-        rect(this.pos.x, this.pos.y, 64, 64);
     }
 
     handleBall(ball) {
-        ball.resetLifetime();
     }
 
 }
