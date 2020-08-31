@@ -16,10 +16,10 @@ class Ball {
         this.contactedPiece = null;
     }
 
-    update(grid) {
+    update(board) {
         this.pos.add(this.speed);
 
-        let newContactedPiece = grid.moduleAt(this.pos.x, this.pos.y);
+        let newContactedPiece = board.pieceAt(this.pos.x, this.pos.y);
         if (newContactedPiece !== this.contactedPiece) {
             if (this.contactedPiece) {
                 this.contactedPiece.onBallLeave(this);
