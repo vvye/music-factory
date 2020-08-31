@@ -5,10 +5,7 @@ class EmptyPiece extends Piece {
     }
 
     draw() {
-        stroke(128);
-        strokeWeight(1);
-        noFill()
-        rect(this.pos.x, this.pos.y, 64, 64);
+        image(spritesheet, this.pos.x, this.pos.y, 64, 64, 128, 0, 16, 16);
     }
 
     onBallEnter(ball) {

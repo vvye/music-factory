@@ -45,9 +45,7 @@ class Ball {
     }
 
     draw() {
-        noStroke();
-        fill(255, 255, 255, map(this.lifetime, 0, BallLifetime, 0, 512));
-        circle(this.pos.x, this.pos.y, 20);
+        image(spritesheet, this.pos.x - 16, this.pos.y - 16, 32, 32, 144, 0, 8, 8);
     }
 
     movingLeft() {
