@@ -40,6 +40,10 @@ class Ball {
         this.lifetime = BallLifetime;
     }
 
+    die() {
+        this.lifetime = 0;
+    }
+
     dead() {
         return this.lifetime <= 0;
     }

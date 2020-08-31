@@ -9,7 +9,7 @@ class SoundPiece extends Piece {
 
     onBallEnter(ball) {
         this.sound.play();
-        ball.rebound();
+        ball.die();
     }
 
     draw() {
