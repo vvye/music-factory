@@ -81,12 +81,9 @@ function draw() {
 
     for (let ball of balls) {
         ball.update(board);
-        if (ball.dead()) {
-            balls.splice(balls.indexOf(ball), 1);
-            continue;
-        }
         ball.draw();
     }
+    balls = balls.filter(ball => !ball.dead());
 
 }
 
