@@ -34,7 +34,7 @@ function setup() {
     board.addPiece(new VerticalPiece(), 384, 256);
     board.addPiece(new HorizontalPiece(), 64, 320);
     board.addPiece(new CurvePiece(CurvePiece.directions.TOP_LEFT), 384, 320);
-    board.addPiece(new HorizontalPiece(), 192, 320);
+    board.addPiece(new GeneratorPiece(), 192, 320);
     board.addPiece(new HorizontalPiece(), 256, 320);
     board.addPiece(new HorizontalPiece(), 320, 320);
     board.addPiece(new CurvePiece(CurvePiece.directions.TOP_RIGHT), 128, 320);
@@ -65,7 +65,7 @@ function draw() {
     background(0);
 
     for (let piece of board.pieces) {
-        piece.update();
+        piece.update(balls);
         piece.draw();
     }
 
