@@ -6,31 +6,31 @@ class Ball {
     pos;
     speed;
     lifetime;
-    contactedModule;
+    contactedPiece;
 
     constructor(x, y, xSpeed, ySpeed) {
         this.id = Math.random();
         this.pos = createVector(x, y);
         this.speed = createVector(xSpeed, ySpeed);
         this.lifetime = BallLifetime;
-        this.contactedModule = null;
+        this.contactedPiece = null;
     }
 
     update(grid) {
         this.pos.add(this.speed);
 
-        let newContactedModule = grid.moduleAt(this.pos.x, this.pos.y);
-        if (newContactedModule !== this.contactedModule) {
-            if (this.contactedModule) {
-                this.contactedModule.onBallLeave(this);
+        let newContactedPiece = grid.moduleAt(this.pos.x, this.pos.y);
+        if (newContactedPiece !== this.contactedPiece) {
+            if (this.contactedPiece) {
+                this.contactedPiece.onBallLeave(this);
             }
-            if (newContactedModule) {
-                newContactedModule.onBallEnter(this);
-                this.contactedModule = newContactedModule;
+            if (newContactedPiece) {
+                newContactedPiece.onBallEnter(this);
+                this.contactedPiece = newContactedPiece;
             }
         }
-        if (this.contactedModule) {
-            this.contactedModule.onBallInside(this);
+        if (this.contactedPiece) {
+            this.contactedPiece.onBallInside(this);
         } else {
             this.lifetime = 0;
         }
