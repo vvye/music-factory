@@ -31,6 +31,8 @@ class Ball {
         }
         if (this.contactedModule) {
             this.contactedModule.onBallInside(this);
+        } else {
+            this.lifetime = 0;
         }
     }
 
