@@ -11,7 +11,7 @@ class HorizontalPiece extends Piece {
     }
 
     onBallEnter(ball) {
-        ball.speed.y *= -1;
+        ball.reboundY();
     }
 
 }

@@ -50,4 +50,40 @@ class Ball {
         circle(this.pos.x, this.pos.y, 20);
     }
 
+    movingLeft() {
+        return this.speed.x < 0;
+    }
+
+    movingRight() {
+        return this.speed.x > 0;
+    }
+
+    stationaryX() {
+        return this.speed.x === 0;
+    }
+
+    movingUp() {
+        return this.speed.y < 0;
+    }
+
+    movingDown() {
+        return this.speed.y > 0;
+    }
+
+    stationaryY() {
+        return this.speed.y === 0;
+    }
+
+    rebound() {
+        this.speed.mult(-1);
+    }
+
+    reboundX() {
+        this.speed.x *= -1;
+    }
+
+    reboundY() {
+        this.speed.y *= -1;
+    }
+
 }

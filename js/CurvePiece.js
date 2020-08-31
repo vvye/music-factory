@@ -41,23 +41,23 @@ class CurvePiece extends Piece {
     onBallEnter(ball) {
         switch (this.direction) {
             case CurvePiece.directions.TOP_LEFT:
-                if (!(ball.speed.x > 0 && ball.speed.y === 0 || ball.speed.x === 0 && ball.speed.y > 0)) {
-                    ball.speed.mult(-1);
+                if (!(ball.movingRight() && ball.stationaryY() || ball.stationaryX() && ball.movingDown())) {
+                    ball.rebound();
                 }
                 break;
             case CurvePiece.directions.TOP_RIGHT:
-                if (!(ball.speed.x < 0 && ball.speed.y === 0 || ball.speed.x === 0 && ball.speed.y > 0)) {
-                    ball.speed.mult(-1);
+                if (!(ball.movingLeft() && ball.stationaryY() || ball.stationaryX() && ball.movingDown())) {
+                    ball.rebound();
                 }
                 break;
             case CurvePiece.directions.BOTTOM_LEFT:
-                if (!(ball.speed.x > 0 && ball.speed.y === 0 || ball.speed.x === 0 && ball.speed.y < 0)) {
-                    ball.speed.mult(-1);
+                if (!(ball.movingRight() && ball.stationaryY() || ball.stationaryX() && ball.movingUp())) {
+                    ball.rebound();
                 }
                 break;
             case CurvePiece.directions.BOTTOM_RIGHT:
-                if (!(ball.speed.x < 0 && ball.speed.y === 0 || ball.speed.x === 0 && ball.speed.y < 0)) {
-                    ball.speed.mult(-1);
+                if (!(ball.movingLeft() && ball.stationaryY() || ball.stationaryX() && ball.movingUp())) {
+                    ball.rebound();
                 }
                 break;
         }
@@ -92,6 +92,5 @@ class CurvePiece extends Piece {
             this.processedBalls.splice(this.processedBalls.indexOf(ball.id), 1);
         }
     }
-
 
 }

@@ -11,7 +11,7 @@ class VerticalPiece extends Piece {
     }
 
     onBallEnter(ball) {
-        ball.speed.x *= -1;
+        ball.reboundX();
     }
 
 }
