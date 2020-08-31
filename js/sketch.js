@@ -1,9 +1,12 @@
 let board;
 let balls = [];
+let sound;
+let spritesheet;
 
 
 function preload() {
     board = new Board(9, 12, 64);
+    sound = loadSound('sound.wav');
 }
 
 
@@ -40,7 +43,7 @@ function setup() {
     board.addPiece(new CurvePiece(CurvePiece.directions.TOP_RIGHT), 128, 320);
     board.addPiece(new HorizontalPiece(), 448, 320);
     board.addPiece(new VerticalPiece(), 128, 192);
-    board.addPiece(new VerticalPiece(), 128, 256);
+    board.addPiece(new SoundPiece(sound), 128, 256);
 
     balls.push(new Ball(256, 160, -4, 0));
     balls.push(new Ball(192, 160, 4, 0));
