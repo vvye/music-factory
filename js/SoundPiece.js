@@ -12,4 +12,8 @@ class SoundPiece extends Piece {
         ball.rebound();
     }
 
+    draw() {
+        image(spritesheet, this.pos.x, this.pos.y, 64, 64, 112, 0, 16, 16);
+    }
+
 }

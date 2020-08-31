@@ -12,30 +12,13 @@ class CurvePiece extends Piece {
     }
 
     draw() {
-        noStroke();
-        fill(255, 0, this.color);
-        switch (this.direction) {
-            case CurvePiece.directions.TOP_LEFT:
-                rect(this.pos.x, this.pos.y + 8, 16, 48);
-                rect(this.pos.x + 8, this.pos.y, 48, 16);
-                arc(this.pos.x + 16, this.pos.y + 16, 80, 80, 0, HALF_PI);
-                break;
-            case CurvePiece.directions.TOP_RIGHT:
-                rect(this.pos.x + 48, this.pos.y + 8, 16, 48);
-                rect(this.pos.x + 8, this.pos.y, 48, 16);
-                arc(this.pos.x + 48, this.pos.y + 16, 80, 80, HALF_PI, PI);
-                break;
-            case CurvePiece.directions.BOTTOM_RIGHT:
-                rect(this.pos.x + 48, this.pos.y + 8, 16, 48);
-                rect(this.pos.x + 8, this.pos.y + 48, 48, 16);
-                arc(this.pos.x + 48, this.pos.y + 48, 80, 80, PI, PI + HALF_PI);
-                break;
-            case CurvePiece.directions.BOTTOM_LEFT:
-                rect(this.pos.x, this.pos.y + 8, 16, 48);
-                rect(this.pos.x + 8, this.pos.y + 48, 48, 16);
-                arc(this.pos.x + 16, this.pos.y + 48, 80, 80, -HALF_PI, 0);
-                break;
-        }
+        let spritesheetPos = {
+            [CurvePiece.directions.BOTTOM_LEFT]: 32,
+            [CurvePiece.directions.TOP_LEFT]: 48,
+            [CurvePiece.directions.TOP_RIGHT]: 64,
+            [CurvePiece.directions.BOTTOM_RIGHT]: 80,
+        }[this.direction];
+        image(spritesheet, this.pos.x, this.pos.y, 64, 64, spritesheetPos, 0, 16, 16);
     }
 
     onBallEnter(ball) {

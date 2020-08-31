@@ -5,9 +5,7 @@ class VerticalPiece extends Piece {
     }
 
     draw() {
-        noStroke();
-        fill(255, 0, this.color);
-        rect(this.pos.x + 8, this.pos.y, 48, 64);
+        image(spritesheet, this.pos.x, this.pos.y, 64, 64, 16, 0, 16, 16);
     }
 
     onBallEnter(ball) {

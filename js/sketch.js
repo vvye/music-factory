@@ -7,12 +7,19 @@ let spritesheet;
 function preload() {
     board = new Board(9, 12, 64);
     sound = loadSound('sound.wav');
+    spritesheet = loadImage('img/spritesheet.png');
 }
 
 
 function setup() {
 
-    createCanvas(board.width(), board.height());
+    let canvas = createCanvas(board.width(), board.height());
+    // nearest-neighbor interpolation
+    let context = canvas.elt.getContext('2d');
+    context.mozImageSmoothingEnabled = false;
+    context.webkitImageSmoothingEnabled = false;
+    context.msImageSmoothingEnabled = false;
+    context.imageSmoothingEnabled = false;
 
     board.addPiece(new HorizontalPiece(), 64, 128);
     board.addPiece(new HorizontalPiece(), 128, 0);

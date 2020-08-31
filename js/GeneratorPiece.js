@@ -16,9 +16,7 @@ class GeneratorPiece extends Piece {
     }
 
     draw() {
-        noStroke();
-        fill(0, 255, 0);
-        rect(this.pos.x, this.pos.y, 64, 64);
+        image(spritesheet, this.pos.x, this.pos.y, 64, 64, 96, 0, 16, 16);
     }
 
 }

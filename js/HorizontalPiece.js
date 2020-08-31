@@ -5,9 +5,7 @@ class HorizontalPiece extends Piece {
     }
 
     draw() {
-        noStroke();
-        fill(255, 0, this.color);
-        rect(this.pos.x, this.pos.y + 8, 64, 48);
+        image(spritesheet, this.pos.x, this.pos.y, 64, 64, 0, 0, 16, 16);
     }
 
     onBallEnter(ball) {
