@@ -1,4 +1,4 @@
-class CurvePipeModule extends Module {
+class CurvePiece extends Piece {
 
     originalSpeeds;
 

@@ -3,7 +3,7 @@ let balls = [];
 
 
 function preload() {
-    grid = new ModuleGrid(9, 12, 64);
+    grid = new Board(9, 12, 64);
 }
 
 
@@ -11,14 +11,14 @@ function setup() {
 
     createCanvas(grid.width(), grid.height());
 
-    grid.addModule(new HorzPipeModule(), 0, 128);
-    grid.addModule(new HorzPipeModule(), 64, 128);
-    grid.addModule(new HorzPipeModule(), 128, 128);
-    grid.addModule(new HorzPipeModule(), 192, 128);
-    grid.addModule(new CurvePipeModule(), 256, 128);
-    grid.addModule(new VertPipeModule(), 256, 192);
-    grid.addModule(new VertPipeModule(), 256, 256);
-    grid.addModule(new HorzPipeModule(), 256, 320);
+    grid.addModule(new HorizontalPiece(), 0, 128);
+    grid.addModule(new HorizontalPiece(), 64, 128);
+    grid.addModule(new HorizontalPiece(), 128, 128);
+    grid.addModule(new HorizontalPiece(), 192, 128);
+    grid.addModule(new CurvePiece(), 256, 128);
+    grid.addModule(new VerticalPiece(), 256, 192);
+    grid.addModule(new VerticalPiece(), 256, 256);
+    grid.addModule(new HorizontalPiece(), 256, 320);
     balls.push(new Ball(0, 160, 4, 0));
     balls.push(new Ball(64, 160, 4, 0));
 
@@ -47,5 +47,5 @@ function draw() {
 
 
 function mousePressed() {
-    grid.addModule(new VertPipeModule(), mouseX, mouseY);
+    grid.addModule(new VerticalPiece(), mouseX, mouseY);
 }

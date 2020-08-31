@@ -1,4 +1,4 @@
-class Module {
+class Piece {
 
     pos;
     color;

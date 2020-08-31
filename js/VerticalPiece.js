@@ -1,4 +1,4 @@
-class HorzPipeModule extends Module {
+class VerticalPiece extends Piece {
 
     constructor() {
         super();
@@ -7,11 +7,11 @@ class HorzPipeModule extends Module {
     draw() {
         noStroke();
         fill(255, 0, this.color);
-        rect(this.pos.x, this.pos.y + 8, 64, 48);
+        rect(this.pos.x + 8, this.pos.y, 48, 64);
     }
 
     onBallEnter(ball) {
-        ball.speed.y *= -1;
+        ball.speed.x *= -1;
     }
 
 }

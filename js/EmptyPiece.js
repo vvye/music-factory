@@ -1,4 +1,4 @@
-class EmptyModule extends Module {
+class EmptyPiece extends Piece {
 
     constructor() {
         super();

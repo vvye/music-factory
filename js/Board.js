@@ -1,4 +1,4 @@
-class ModuleGrid {
+class Board {
 
     rows;
     cols;
@@ -16,7 +16,7 @@ class ModuleGrid {
     initModules() {
         for (let row = 0; row < this.rows; row++) {
             for (let col = 0; col < this.cols; col++) {
-                this.addModuleRowCol(new EmptyModule(), row, col);
+                this.addModuleRowCol(new EmptyPiece(), row, col);
             }
         }
     }
