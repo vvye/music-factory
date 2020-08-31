@@ -32,7 +32,9 @@ class Board {
     addModule(module, x, y) {
         let row = int(y / this.cellSize);
         let col = int(x / this.cellSize);
-        this.addModuleRowCol(module, row, col);
+        if (row < this.rows && col < this.cols) {
+            this.addModuleRowCol(module, row, col);
+        }
     }
 
     addModuleRowCol(module, row, col) {
