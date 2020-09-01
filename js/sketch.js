@@ -2,18 +2,20 @@ let board;
 let balls = [];
 let sound;
 let spritesheet;
+let palette;
 
 
 function preload() {
     board = new Board(9, 12, 64);
     sound = loadSound('sound.wav');
     spritesheet = loadImage('img/spritesheet.png');
+    palette = new Palette(board.width(), 0, 320, 512);
 }
 
 
 function setup() {
 
-    let canvas = createCanvas(board.width(), board.height());
+    let canvas = createCanvas(board.width() + palette.width, max(board.height(), palette.height));
     // nearest-neighbor interpolation
     let context = canvas.elt.getContext('2d');
     context.mozImageSmoothingEnabled = false;
@@ -73,6 +75,7 @@ function setup() {
 function draw() {
 
     background(0);
+    palette.draw();
 
     for (let piece of board.pieces) {
         piece.update(balls);
@@ -89,5 +92,11 @@ function draw() {
 
 
 function mousePressed() {
-    board.addPiece(new VerticalPiece(), mouseX, mouseY);
+
+    palette.onMousePressed();
+    let piece = palette.pieceToPlace();
+    if (piece) {
+        board.addPiece(piece, mouseX, mouseY);
+    }
+
 }
