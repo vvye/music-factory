@@ -49,7 +49,7 @@ function setup() {
     board.addPiece(new HorizontalPiece(), 320, 320);
     board.addPiece(new CurvePiece(CurvePiece.directions.TOP_RIGHT), 128, 320);
     board.addPiece(new HorizontalPiece(), 448, 320);
-    board.addPiece(new VerticalPiece(), 128, 192);
+    board.addPiece(new JunctionPiece(), 128, 192);
     board.addPiece(new SoundPiece(sound), 128, 256);
 
     balls.push(new Ball(256, 160, -4, 0));

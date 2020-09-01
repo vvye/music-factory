@@ -16,7 +16,7 @@ class GeneratorPiece extends Piece {
     }
 
     draw() {
-        let frame = int(frameCount / 4) % 6;
+        let frame = int(frameCount / 8) % 4;
         image(spritesheet, this.pos.x, this.pos.y, 64, 64, 128, 0, 16, 16);
         image(spritesheet, this.pos.x, this.pos.y, 64, 64, 96, frame * 16, 16, 16);
     }
