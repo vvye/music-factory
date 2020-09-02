@@ -5,19 +5,21 @@ let spritesheet;
 let logo;
 let palette;
 
+let scaleFactor = 4;
+
 
 function preload() {
-    board = new Board(9, 12, 64);
+    board = new Board(9, 12, 16);
     sound = loadSound('sound.wav');
     spritesheet = loadImage('img/spritesheet.png');
     logo = loadImage('img/logo.png');
-    palette = new Palette(board.width(), 0, 448, 576);
+    palette = new Palette(board.width(), 0, 114, 144);
 }
 
 
 function setup() {
 
-    let canvas = createCanvas(board.width() + palette.width, max(board.height(), palette.height));
+    let canvas = createCanvas((board.width() + palette.width) * scaleFactor, (max(board.height(), palette.height)) * scaleFactor);
     // nearest-neighbor interpolation
     let context = canvas.elt.getContext('2d');
     context.mozImageSmoothingEnabled = false;
@@ -25,51 +27,51 @@ function setup() {
     context.msImageSmoothingEnabled = false;
     context.imageSmoothingEnabled = false;
 
-    board.addPiece(new HorizontalPiece(), 64, 128);
-    board.addPiece(new HorizontalPiece(), 128, 0);
-    board.addPiece(new VerticalPiece(), 128, 64);
-    board.addPiece(new VerticalPiece(), 384, 64);
-    board.addPiece(new VerticalPiece(), 0, 128);
-    board.addPiece(new VerticalPiece(), 512, 128);
-    board.addPiece(new VerticalPiece(), 512, 320);
-    board.addPiece(new VerticalPiece(), 0, 320);
-    board.addPiece(new VerticalPiece(), 128, 384);
-    board.addPiece(new VerticalPiece(), 384, 384);
-    board.addPiece(new HorizontalPiece(), 128, 448);
-    board.addPiece(new CurvePiece(CurvePiece.directions.BOTTOM_RIGHT), 128, 128);
-    board.addPiece(new HorizontalPiece(), 192, 128);
-    board.addPiece(new HorizontalPiece(), 256, 128);
-    board.addPiece(new HorizontalPiece(), 320, 128);
-    board.addPiece(new HorizontalPiece(), 384, 0);
-    board.addPiece(new HorizontalPiece(), 384, 448);
-    board.addPiece(new CurvePiece(CurvePiece.directions.BOTTOM_LEFT), 384, 128);
-    board.addPiece(new HorizontalPiece(), 448, 128);
-    board.addPiece(new VerticalPiece(), 384, 192);
-    board.addPiece(new VerticalPiece(), 384, 256);
-    board.addPiece(new HorizontalPiece(), 64, 320);
-    board.addPiece(new CurvePiece(CurvePiece.directions.TOP_LEFT), 384, 320);
-    board.addPiece(new GeneratorPiece(), 192, 320);
-    board.addPiece(new HorizontalPiece(), 256, 320);
-    board.addPiece(new HorizontalPiece(), 320, 320);
-    board.addPiece(new CurvePiece(CurvePiece.directions.TOP_RIGHT), 128, 320);
-    board.addPiece(new HorizontalPiece(), 448, 320);
-    board.addPiece(new JunctionPiece(), 128, 192);
-    board.addPiece(new SoundPiece(sound), 128, 256);
+    board.addPiece(new HorizontalPiece(), 16, 32);
+    board.addPiece(new HorizontalPiece(), 32, 0);
+    board.addPiece(new VerticalPiece(), 32, 16);
+    board.addPiece(new VerticalPiece(), 96, 16);
+    board.addPiece(new VerticalPiece(), 0, 32);
+    board.addPiece(new VerticalPiece(), 128, 32);
+    board.addPiece(new VerticalPiece(), 128, 80);
+    board.addPiece(new VerticalPiece(), 0, 80);
+    board.addPiece(new VerticalPiece(), 32, 96);
+    board.addPiece(new VerticalPiece(), 96, 96);
+    board.addPiece(new HorizontalPiece(), 32, 112);
+    board.addPiece(new CurvePiece(CurvePiece.directions.BOTTOM_RIGHT), 32, 32);
+    board.addPiece(new HorizontalPiece(), 48, 32);
+    board.addPiece(new HorizontalPiece(), 64, 32);
+    board.addPiece(new HorizontalPiece(), 80, 32);
+    board.addPiece(new HorizontalPiece(), 96, 0);
+    board.addPiece(new HorizontalPiece(), 96, 112);
+    board.addPiece(new CurvePiece(CurvePiece.directions.BOTTOM_LEFT), 96, 32);
+    board.addPiece(new HorizontalPiece(), 112, 32);
+    board.addPiece(new VerticalPiece(), 96, 48);
+    board.addPiece(new VerticalPiece(), 96, 64);
+    board.addPiece(new HorizontalPiece(), 16, 80);
+    board.addPiece(new CurvePiece(CurvePiece.directions.TOP_LEFT), 96, 80);
+    board.addPiece(new GeneratorPiece(), 48, 80);
+    board.addPiece(new HorizontalPiece(), 64, 80);
+    board.addPiece(new HorizontalPiece(), 80, 80);
+    board.addPiece(new CurvePiece(CurvePiece.directions.TOP_RIGHT), 32, 80);
+    board.addPiece(new HorizontalPiece(), 112, 80);
+    board.addPiece(new JunctionPiece(), 32, 48);
+    board.addPiece(new SoundPiece(sound), 32, 64);
 
-    balls.push(new Ball(256, 160, -4, 0));
-    balls.push(new Ball(192, 160, 4, 0));
+    balls.push(new Ball(64, 40, -1, 0));
+    balls.push(new Ball(48, 40, 1, 0));
 
-    balls.push(new Ball(64, 160, 4, 0));
-    balls.push(new Ball(160, 112, 0, 4));
+    balls.push(new Ball(16, 40, 1, 0));
+    balls.push(new Ball(40, 28, 0, 1));
 
-    balls.push(new Ball(480, 160, 4, 0));
-    balls.push(new Ball(416, 112, 0, 4));
+    balls.push(new Ball(120, 40, 1, 0));
+    balls.push(new Ball(104, 28, 0, 1));
 
-    balls.push(new Ball(64, 352, 4, 0));
-    balls.push(new Ball(160, 432, 0, -4));
+    balls.push(new Ball(16, 88, 1, 0));
+    balls.push(new Ball(40, 108, 0, -1));
 
-    balls.push(new Ball(448, 352, 4, 0));
-    balls.push(new Ball(416, 432, 0, -4));
+    balls.push(new Ball(112, 88, 1, 0));
+    balls.push(new Ball(104, 108, 0, -1));
 
 }
 
@@ -101,7 +103,7 @@ function mousePressed() {
     palette.onMousePressed();
     let piece = palette.pieceToPlace();
     if (piece) {
-        board.addPiece(piece, mouseX, mouseY);
+        board.addPiece(piece, mouseX / scaleFactor, mouseY / scaleFactor);
     }
 
 }

@@ -49,7 +49,7 @@ class Ball {
     }
 
     draw() {
-        image(spritesheet, this.pos.x - 14, this.pos.y - 14, 28, 28, 144, 0, 7, 7);
+        image(spritesheet, (this.pos.x - 3.5) * scaleFactor, (this.pos.y - 3.5) * scaleFactor, 7 * scaleFactor, 7 * scaleFactor, 144, 0, 7, 7);
     }
 
     movingLeft() {

@@ -8,7 +8,7 @@ class EmptyPiece extends Piece {
     }
 
     draw() {
-        image(spritesheet, this.pos.x, this.pos.y, 64, 64, 128, this.img * 16, 16, 16);
+        image(spritesheet, this.pos.x * scaleFactor, this.pos.y * scaleFactor, 16 * scaleFactor, 16 * scaleFactor, 128, this.img * 16, 16, 16);
     }
 
     onBallEnter(ball) {

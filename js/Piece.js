@@ -1,10 +1,8 @@
 class Piece {
 
     pos;
-    color;
 
     constructor() {
-        this.color = 255;
         this.pos = createVector();
     }
 
@@ -24,13 +22,13 @@ class Piece {
     }
 
     ballNearCenter(ball) {
-        return abs(ball.pos.x - (this.pos.x + 32)) < abs(ball.speed.x) + 0.001
-            && abs(ball.pos.y - (this.pos.y + 32)) < abs(ball.speed.y) + 0.001;
+        return abs(ball.pos.x - (this.pos.x + 8)) < abs(ball.speed.x) + 0.001
+            && abs(ball.pos.y - (this.pos.y + 8)) < abs(ball.speed.y) + 0.001;
     }
 
     setBallToCenter(ball) {
-        ball.pos.x = this.pos.x + 32;
-        ball.pos.y = this.pos.y + 32;
+        ball.pos.x = this.pos.x + 8;
+        ball.pos.y = this.pos.y + 8;
     }
 
 }

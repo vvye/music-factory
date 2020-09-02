@@ -18,8 +18,8 @@ class CurvePiece extends Piece {
             [CurvePiece.directions.TOP_RIGHT]: 64,
             [CurvePiece.directions.BOTTOM_RIGHT]: 80,
         }[this.direction];
-        image(spritesheet, this.pos.x, this.pos.y, 64, 64, 128, 0, 16, 16);
-        image(spritesheet, this.pos.x, this.pos.y, 64, 64, spritesheetPos, 0, 16, 16);
+        image(spritesheet, this.pos.x * scaleFactor, this.pos.y * scaleFactor, 16 * scaleFactor, 16 * scaleFactor, 128, 0, 16, 16);
+        image(spritesheet, this.pos.x * scaleFactor, this.pos.y * scaleFactor, 16 * scaleFactor, 16 * scaleFactor, spritesheetPos, 0, 16, 16);
     }
 
     onBallEnter(ball) {
