@@ -1,6 +1,6 @@
-const BallLifetime = 25;
-
 class Ball {
+
+    static lifetime = 25;
 
     id;
     pos;
@@ -12,7 +12,7 @@ class Ball {
         this.id = Math.random();
         this.pos = createVector(x, y);
         this.speed = createVector(xSpeed, ySpeed);
-        this.lifetime = BallLifetime;
+        this.lifetime = Ball.lifetime;
         this.contactedPiece = null;
     }
 
@@ -37,7 +37,7 @@ class Ball {
     }
 
     resetLifetime() {
-        this.lifetime = BallLifetime;
+        this.lifetime = Ball.lifetime;
     }
 
     die() {
@@ -60,20 +60,12 @@ class Ball {
         return this.speed.x > 0;
     }
 
-    stationaryX() {
-        return this.speed.x === 0;
-    }
-
     movingUp() {
         return this.speed.y < 0;
     }
 
     movingDown() {
         return this.speed.y > 0;
-    }
-
-    stationaryY() {
-        return this.speed.y === 0;
     }
 
     rebound() {
