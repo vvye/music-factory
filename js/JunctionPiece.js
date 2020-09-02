@@ -8,7 +8,7 @@ class JunctionPiece extends Piece {
         super();
         this.processedBalls = [];
         if (!JunctionPiece.sprite) {
-            JunctionPiece.sprite = new Sprite(spritesheet, 160, 0, 16, 16);
+            JunctionPiece.sprite = new Sprite(mainSpritesheet, 96, 0, 16, 16);
         }
     }
 

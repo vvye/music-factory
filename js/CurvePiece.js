@@ -14,10 +14,10 @@ class CurvePiece extends Piece {
         this.processedBalls = [];
         this.direction = direction;
         if (!CurvePiece.topLeftSprite) {
-            CurvePiece.topLeftSprite = new Sprite(spritesheet, 48, 0, 16, 16);
-            CurvePiece.topRightSprite = new Sprite(spritesheet, 64, 0, 16, 16);
-            CurvePiece.bottomLeftSprite = new Sprite(spritesheet, 32, 0, 16, 16);
-            CurvePiece.bottomRightSprite = new Sprite(spritesheet, 80, 0, 16, 16);
+            CurvePiece.topLeftSprite = new Sprite(mainSpritesheet, 48, 0, 16, 16);
+            CurvePiece.topRightSprite = new Sprite(mainSpritesheet, 64, 0, 16, 16);
+            CurvePiece.bottomLeftSprite = new Sprite(mainSpritesheet, 32, 0, 16, 16);
+            CurvePiece.bottomRightSprite = new Sprite(mainSpritesheet, 80, 0, 16, 16);
         }
     }
 

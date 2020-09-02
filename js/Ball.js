@@ -16,7 +16,7 @@ class Ball {
         this.lifetime = Ball.lifetime;
         this.contactedPiece = null;
         if (!Ball.sprite) {
-            Ball.sprite = new Sprite(spritesheet, 144, 0, 7, 7);
+            Ball.sprite = new Sprite(mainSpritesheet, 448, 0, 7, 7);
         }
     }
 

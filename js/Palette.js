@@ -15,18 +15,18 @@ class Palette {
         this.height = height;
         this.initButtons();
         if (!Palette.backgroundSprite) {
-            Palette.backgroundSprite = new Sprite(spritesheet, 144, 16, 16, 16);
-            Palette.borderSprite = new Sprite(spritesheet, 144, 32, 16, 16);
-            Palette.logoSprite = new Sprite(logo, 0, 0, 87, 29);
+            Palette.backgroundSprite = new Sprite(mainSpritesheet, 272, 0, 16, 16);
+            Palette.borderSprite = new Sprite(mainSpritesheet, 288, 0, 16, 16);
+            Palette.logoSprite = new Sprite(logoSpritesheet, 0, 0, 87, 29);
         }
     }
 
     initButtons() {
         this.buttons = [
-            new Button(8, 40, 22, 22, () => new EmptyPiece(), new Sprite(spritesheet, 224, 0, 16, 16)),
-            new Button(34, 40, 22, 22, () => new HorizontalPiece(), new Sprite(spritesheet, 0, 0, 16, 16)),
-            new Button(60, 40, 22, 22, () => new CurvePiece(CurvePiece.directions.BOTTOM_LEFT), new Sprite(spritesheet, 32, 0, 16, 16)),
-            new Button(86, 40, 22, 22, () => new JunctionPiece(), new Sprite(spritesheet, 160, 0, 16, 16)),
+            new Button(8, 40, 22, 22, () => new EmptyPiece(), new Sprite(mainSpritesheet, 368, 0, 16, 16)),
+            new Button(34, 40, 22, 22, () => new HorizontalPiece(), new Sprite(mainSpritesheet, 0, 0, 16, 16)),
+            new Button(60, 40, 22, 22, () => new CurvePiece(CurvePiece.directions.BOTTOM_LEFT), new Sprite(mainSpritesheet, 32, 0, 16, 16)),
+            new Button(86, 40, 22, 22, () => new JunctionPiece(), new Sprite(mainSpritesheet, 96, 0, 16, 16)),
         ];
     }
 

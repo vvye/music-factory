@@ -18,8 +18,8 @@ class Button {
         this.active = false;
         this.labelSprite = labelSprite;
         if (!Button.inactiveSprite) {
-            Button.inactiveSprite = new Sprite(spritesheet, 176, 0, 22, 22);
-            Button.activeSprite = new Sprite(spritesheet, 200, 0, 22, 22);
+            Button.inactiveSprite = new Sprite(mainSpritesheet, 304, 0, 22, 22);
+            Button.activeSprite = new Sprite(mainSpritesheet, 336, 0, 22, 22);
         }
     }
 

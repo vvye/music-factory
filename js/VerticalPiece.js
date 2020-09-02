@@ -5,7 +5,7 @@ class VerticalPiece extends Piece {
     constructor() {
         super();
         if (!VerticalPiece.sprite) {
-            VerticalPiece.sprite = new Sprite(spritesheet, 16, 0, 16, 16);
+            VerticalPiece.sprite = new Sprite(mainSpritesheet, 16, 0, 16, 16);
         }
     }
 

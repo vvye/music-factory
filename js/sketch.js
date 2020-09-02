@@ -1,16 +1,16 @@
 let board;
 let balls = [];
 let sound;
-let spritesheet;
-let logo;
+let mainSpritesheet;
+let logoSpritesheet;
 let palette;
 
 let scaleFactor = 4;
 
 
 function preload() {
-    spritesheet = loadImage('img/spritesheet.png');
-    logo = loadImage('img/logo.png');
+    mainSpritesheet = loadImage('img/spritesheet.png');
+    logoSpritesheet = loadImage('img/logo.png');
     board = new Board(9, 12, 16);
     sound = loadSound('sound.wav');
     palette = new Palette(board.width(), 0, 114, 144);

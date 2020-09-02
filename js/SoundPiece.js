@@ -8,7 +8,7 @@ class SoundPiece extends Piece {
         super();
         this.sound = sound;
         if (!SoundPiece.sprite) {
-            SoundPiece.sprite = new Sprite(spritesheet, 112, 0, 16, 16);
+            SoundPiece.sprite = new Sprite(mainSpritesheet, 528, 0, 16, 16);
         }
     }
 

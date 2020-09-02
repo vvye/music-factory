@@ -8,9 +8,9 @@ class EmptyPiece extends Piece {
         super();
         if (!EmptyPiece.sprites) {
             EmptyPiece.sprites = [
-                new Sprite(spritesheet, 128, 0, 16, 16),
-                new Sprite(spritesheet, 128, 16, 16, 16),
-                new Sprite(spritesheet, 128, 32, 16, 16)
+                new Sprite(mainSpritesheet, 256, 0, 16, 16),
+                new Sprite(mainSpritesheet, 256, 16, 16, 16),
+                new Sprite(mainSpritesheet, 256, 32, 16, 16)
             ]
         }
         this.sprite = random(EmptyPiece.sprites);

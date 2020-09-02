@@ -7,7 +7,7 @@ class Piece {
     constructor() {
         this.pos = createVector();
         if (!Piece.backgroundSprite) {
-            Piece.backgroundSprite = new Sprite(spritesheet, 128, 0, 16, 16);
+            Piece.backgroundSprite = new Sprite(mainSpritesheet, 256, 0, 16, 16);
         }
     }
 

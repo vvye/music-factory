@@ -5,7 +5,7 @@ class HorizontalPiece extends Piece {
     constructor() {
         super();
         if (!HorizontalPiece.sprite) {
-            HorizontalPiece.sprite = new Sprite(spritesheet, 0, 0, 16, 16);
+            HorizontalPiece.sprite = new Sprite(mainSpritesheet, 0, 0, 16, 16);
         }
     }
 
