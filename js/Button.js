@@ -18,8 +18,9 @@ class Button {
 
     draw(baseX, baseY) {
         let xOffset = this.active ? 200 : 176;
-        image(spritesheet, baseX + this.pos.x, baseY + this.pos.y, this.width, this.height, xOffset, 0, 22, 22);
-        image(spritesheet, baseX + this.pos.x + 12, baseY + this.pos.y + 12, 64, 64, this.spritesheetOffset.x, this.spritesheetOffset.y, 16, 16);
+        let posYOffset = this.active ? 4 : 0;
+        image(spritesheet, baseX + this.pos.x, baseY + this.pos.y + posYOffset, this.width, this.height, xOffset, 0, 22, 22);
+        image(spritesheet, baseX + this.pos.x + 12, baseY + this.pos.y + posYOffset + 12, 64, 64, this.spritesheetOffset.x, this.spritesheetOffset.y, 16, 16);
     }
 
 }
