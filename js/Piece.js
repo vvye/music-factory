@@ -1,9 +1,14 @@
 class Piece {
 
+    static backgroundSprite;
+
     pos;
 
     constructor() {
         this.pos = createVector();
+        if (!Piece.backgroundSprite) {
+            Piece.backgroundSprite = new Sprite(spritesheet, 128, 0, 16, 16);
+        }
     }
 
     update() {

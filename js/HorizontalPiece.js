@@ -1,12 +1,17 @@
 class HorizontalPiece extends Piece {
 
+    static sprite;
+
     constructor() {
         super();
+        if (!HorizontalPiece.sprite) {
+            HorizontalPiece.sprite = new Sprite(spritesheet, 0, 0, 16, 16);
+        }
     }
 
     draw() {
-        image(spritesheet, this.pos.x * scaleFactor, this.pos.y * scaleFactor, 16 * scaleFactor, 16 * scaleFactor, 128, 0, 16, 16);
-        image(spritesheet, this.pos.x * scaleFactor, this.pos.y * scaleFactor, 16 * scaleFactor, 16 * scaleFactor, 0, 0, 16, 16);
+        Piece.backgroundSprite.draw(this.pos.x, this.pos.y);
+        HorizontalPiece.sprite.draw(this.pos.x, this.pos.y);
     }
 
     onBallEnter(ball) {

@@ -1,10 +1,15 @@
 class SoundPiece extends Piece {
 
+    static sprite;
+
     sound;
 
     constructor(sound) {
         super();
         this.sound = sound;
+        if (!SoundPiece.sprite) {
+            SoundPiece.sprite = new Sprite(spritesheet, 112, 0, 16, 16);
+        }
     }
 
     onBallEnter(ball) {
@@ -13,8 +18,8 @@ class SoundPiece extends Piece {
     }
 
     draw() {
-        image(spritesheet, this.pos.x * scaleFactor, this.pos.y * scaleFactor, 16 * scaleFactor, 16 * scaleFactor, 128, 0, 16, 16);
-        image(spritesheet, this.pos.x * scaleFactor, this.pos.y * scaleFactor, 16 * scaleFactor, 16 * scaleFactor, 112, 0, 16, 16);
+        Piece.backgroundSprite.draw(this.pos.x, this.pos.y);
+        SoundPiece.sprite.draw(this.pos.x, this.pos.y);
     }
 
 }

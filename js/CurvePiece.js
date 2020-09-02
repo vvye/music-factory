@@ -1,6 +1,10 @@
 class CurvePiece extends Piece {
 
     static directions = {TOP_LEFT: 0, TOP_RIGHT: 1, BOTTOM_LEFT: 2, BOTTOM_RIGHT: 3};
+    static topLeftSprite;
+    static topRightSprite;
+    static bottomLeftSprite;
+    static bottomRightSprite;
 
     processedBalls;
     direction;
@@ -9,17 +13,23 @@ class CurvePiece extends Piece {
         super();
         this.processedBalls = [];
         this.direction = direction;
+        if (!CurvePiece.topLeftSprite) {
+            CurvePiece.topLeftSprite = new Sprite(spritesheet, 48, 0, 16, 16);
+            CurvePiece.topRightSprite = new Sprite(spritesheet, 64, 0, 16, 16);
+            CurvePiece.bottomLeftSprite = new Sprite(spritesheet, 32, 0, 16, 16);
+            CurvePiece.bottomRightSprite = new Sprite(spritesheet, 80, 0, 16, 16);
+        }
     }
 
     draw() {
-        let spritesheetPos = {
-            [CurvePiece.directions.BOTTOM_LEFT]: 32,
-            [CurvePiece.directions.TOP_LEFT]: 48,
-            [CurvePiece.directions.TOP_RIGHT]: 64,
-            [CurvePiece.directions.BOTTOM_RIGHT]: 80,
+        let sprite = {
+            [CurvePiece.directions.BOTTOM_LEFT]: CurvePiece.bottomLeftSprite,
+            [CurvePiece.directions.TOP_LEFT]: CurvePiece.topLeftSprite,
+            [CurvePiece.directions.TOP_RIGHT]: CurvePiece.topRightSprite,
+            [CurvePiece.directions.BOTTOM_RIGHT]: CurvePiece.bottomRightSprite,
         }[this.direction];
-        image(spritesheet, this.pos.x * scaleFactor, this.pos.y * scaleFactor, 16 * scaleFactor, 16 * scaleFactor, 128, 0, 16, 16);
-        image(spritesheet, this.pos.x * scaleFactor, this.pos.y * scaleFactor, 16 * scaleFactor, 16 * scaleFactor, spritesheetPos, 0, 16, 16);
+        Piece.backgroundSprite.draw(this.pos.x, this.pos.y);
+        sprite.draw(this.pos.x, this.pos.y);
     }
 
     onBallEnter(ball) {

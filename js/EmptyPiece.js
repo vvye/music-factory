@@ -1,14 +1,23 @@
 class EmptyPiece extends Piece {
 
-    img;
+    static sprites;
+
+    sprite;
 
     constructor() {
         super();
-        this.img = random([0, 1, 2]);
+        if (!EmptyPiece.sprites) {
+            EmptyPiece.sprites = [
+                new Sprite(spritesheet, 128, 0, 16, 16),
+                new Sprite(spritesheet, 128, 16, 16, 16),
+                new Sprite(spritesheet, 128, 32, 16, 16)
+            ]
+        }
+        this.sprite = random(EmptyPiece.sprites);
     }
 
     draw() {
-        image(spritesheet, this.pos.x * scaleFactor, this.pos.y * scaleFactor, 16 * scaleFactor, 16 * scaleFactor, 128, this.img * 16, 16, 16);
+        this.sprite.draw(this.pos.x, this.pos.y);
     }
 
     onBallEnter(ball) {

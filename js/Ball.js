@@ -1,6 +1,7 @@
 class Ball {
 
     static lifetime = 25;
+    static sprite;
 
     id;
     pos;
@@ -14,6 +15,9 @@ class Ball {
         this.speed = createVector(xSpeed, ySpeed);
         this.lifetime = Ball.lifetime;
         this.contactedPiece = null;
+        if (!Ball.sprite) {
+            Ball.sprite = new Sprite(spritesheet, 144, 0, 7, 7);
+        }
     }
 
     update(board) {
@@ -49,7 +53,7 @@ class Ball {
     }
 
     draw() {
-        image(spritesheet, (this.pos.x - 3.5) * scaleFactor, (this.pos.y - 3.5) * scaleFactor, 7 * scaleFactor, 7 * scaleFactor, 144, 0, 7, 7);
+        Ball.sprite.draw(this.pos.x - 3.5, this.pos.y - 3.5);
     }
 
     movingLeft() {

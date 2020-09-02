@@ -1,7 +1,12 @@
 class GeneratorPiece extends Piece {
 
+    static sprite;
+
     constructor() {
         super();
+        if (!GeneratorPiece.sprite) {
+            GeneratorPiece.sprite = new Sprite(spritesheet, 96, 0, 16, 16, 4);
+        }
     }
 
     update(balls) {
@@ -16,9 +21,8 @@ class GeneratorPiece extends Piece {
     }
 
     draw() {
-        let frame = int(frameCount / 8) % 4;
-        image(spritesheet, this.pos.x * scaleFactor, this.pos.y * scaleFactor, 16 * scaleFactor, 16 * scaleFactor, 128, 0, 16, 16);
-        image(spritesheet, this.pos.x * scaleFactor, this.pos.y * scaleFactor, 16 * scaleFactor, 16 * scaleFactor, 96, frame * 16, 16, 16);
+        Piece.backgroundSprite.draw(this.pos.x, this.pos.y);
+        GeneratorPiece.sprite.draw(this.pos.x, this.pos.y);
     }
 
 }

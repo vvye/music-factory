@@ -9,10 +9,10 @@ let scaleFactor = 4;
 
 
 function preload() {
-    board = new Board(9, 12, 16);
-    sound = loadSound('sound.wav');
     spritesheet = loadImage('img/spritesheet.png');
     logo = loadImage('img/logo.png');
+    board = new Board(9, 12, 16);
+    sound = loadSound('sound.wav');
     palette = new Palette(board.width(), 0, 114, 144);
 }
 
@@ -22,6 +22,7 @@ function setup() {
     let canvas = createCanvas((board.width() + palette.width) * scaleFactor, (max(board.height(), palette.height)) * scaleFactor);
     // nearest-neighbor interpolation
     let context = canvas.elt.getContext('2d');
+    context.imageSmoothingEnabled = false;
     context.mozImageSmoothingEnabled = false;
     context.webkitImageSmoothingEnabled = false;
     context.msImageSmoothingEnabled = false;
@@ -92,8 +93,6 @@ function draw() {
     balls = balls.filter(ball => !ball.dead());
 
     palette.draw();
-
-    console.log(frameRate());
 
 }
 
