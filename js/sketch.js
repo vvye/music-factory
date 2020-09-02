@@ -2,6 +2,7 @@ let board;
 let balls = [];
 let sound;
 let spritesheet;
+let logo;
 let palette;
 
 
@@ -9,7 +10,8 @@ function preload() {
     board = new Board(9, 12, 64);
     sound = loadSound('sound.wav');
     spritesheet = loadImage('img/spritesheet.png');
-    palette = new Palette(board.width(), 0, 320, 512);
+    logo = loadImage('img/logo.png');
+    palette = new Palette(board.width(), 0, 448, 576);
 }
 
 
@@ -75,7 +77,6 @@ function setup() {
 function draw() {
 
     background(0);
-    palette.draw();
 
     for (let piece of board.pieces) {
         piece.update(balls);
@@ -87,6 +88,10 @@ function draw() {
         ball.draw();
     }
     balls = balls.filter(ball => !ball.dead());
+
+    palette.draw();
+
+    console.log(frameRate());
 
 }
 

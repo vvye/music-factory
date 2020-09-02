@@ -13,7 +13,12 @@ class Palette {
     }
 
     initButtons() {
-        this.buttons = [new Button(16, 16, 56, 56, () => new SoundPiece(sound))];
+        this.buttons = [
+            new Button(32, 160, 88, 88, () => new EmptyPiece(), 224, 0),
+            new Button(136, 160, 88, 88, () => new HorizontalPiece(), 0, 0),
+            new Button(240, 160, 88, 88, () => new CurvePiece(CurvePiece.directions.BOTTOM_LEFT), 32, 0),
+            new Button(344, 160, 88, 88, () => new JunctionPiece(), 160, 0),
+        ];
     }
 
     pieceToPlace() {
@@ -26,9 +31,13 @@ class Palette {
     }
 
     draw() {
-        noStroke();
-        fill(65,26,36);
-        rect(this.pos.x, this.pos.y, this.width, this.height);
+        for (let y = 0; y < this.height; y += 64) {
+            for (let x = 0; x < this.width; x += 64) {
+                image(spritesheet, this.pos.x + x, this.pos.y + y, 64, 64, 144, 16, 16, 16);
+            }
+            image(spritesheet, this.pos.x - 32, this.pos.y + y, 64, 64, 144, 32, 16, 16);
+        }
+        image(logo, this.pos.x + 56, this.pos.y + 16, 348, 116, 0, 0, 87, 29);
         for (let button of this.buttons) {
             button.draw(this.pos.x, this.pos.y);
         }
@@ -44,7 +53,7 @@ class Palette {
 
         for (let button of this.buttons) {
             button.active = (mouseX - this.pos.x >= button.pos.x && mouseX - this.pos.x < button.pos.x + button.width
-                && mouseY - this.pos.y >= button.pos.y && mouseY - this.pos.y < button.pos.x + button.height);
+                && mouseY - this.pos.y >= button.pos.y && mouseY - this.pos.y < button.pos.y + button.height);
         }
 
     }
