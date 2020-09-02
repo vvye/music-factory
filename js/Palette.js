@@ -8,12 +8,15 @@ class Palette {
     width;
     height;
     buttons;
+    toolButtons;
+    pieceOrientation;
 
     constructor(x, y, width, height) {
         this.pos = createVector(x, y);
         this.width = width;
         this.height = height;
         this.initButtons();
+        this.pieceOrientation = Orientation.UP;
         if (!Palette.backgroundSprite) {
             Palette.backgroundSprite = new Sprite(mainSpritesheet, 272, 0, 16, 16);
             Palette.borderSprite = new Sprite(mainSpritesheet, 288, 0, 16, 16);
@@ -22,11 +25,17 @@ class Palette {
     }
 
     initButtons() {
+        this.toolButtons = [
+            new ToolbarButton(23, 40, 16, 16, this.resetBoard.bind(this), new Sprite(mainSpritesheet, 384, 0, 16, 16)),
+            new ToolbarButton(41, 40, 16, 16, this.rotatePiecesLeft.bind(this), new Sprite(mainSpritesheet, 400, 0, 16, 16)),
+            new ToolbarButton(59, 40, 16, 16, this.zoomIn.bind(this), new Sprite(mainSpritesheet, 416, 0, 16, 16)),
+            new ToolbarButton(77, 40, 16, 16, this.zoomOut.bind(this), new Sprite(mainSpritesheet, 432, 0, 16, 16)),
+        ]
         this.buttons = [
-            new Button(8, 40, 22, 22, () => new EmptyPiece(), new Sprite(mainSpritesheet, 368, 0, 16, 16)),
-            new Button(34, 40, 22, 22, () => new HorizontalPiece(), new Sprite(mainSpritesheet, 0, 0, 16, 16)),
-            new Button(60, 40, 22, 22, () => new CurvePiece(CurvePiece.directions.BOTTOM_LEFT), new Sprite(mainSpritesheet, 32, 0, 16, 16)),
-            new Button(86, 40, 22, 22, () => new JunctionPiece(), new Sprite(mainSpritesheet, 96, 0, 16, 16)),
+            new Button(8, 66, 22, 22, () => new EmptyPiece(), new Sprite(mainSpritesheet, 368, 0, 16, 16)),
+            new Button(34, 66, 22, 22, () => new HorizontalPiece(), new Sprite(mainSpritesheet, 0, 0, 16, 16)),
+            new Button(60, 66, 22, 22, () => new CurvePiece(CurvePiece.directions.BOTTOM_LEFT), new Sprite(mainSpritesheet, 32, 0, 16, 16)),
+            new Button(86, 66, 22, 22, () => new JunctionPiece(), new Sprite(mainSpritesheet, 96, 0, 16, 16)),
         ];
     }
 
@@ -50,6 +59,9 @@ class Palette {
         for (let button of this.buttons) {
             button.draw(this.pos.x, this.pos.y);
         }
+        for (let button of this.toolButtons) {
+            button.draw(this.pos.x, this.pos.y);
+        }
     }
 
     onMousePressed() {
@@ -61,6 +73,28 @@ class Palette {
             button.active = (mouseX - (this.pos.x * scaleFactor) >= button.pos.x * scaleFactor && mouseX - (this.pos.x * scaleFactor) < (button.pos.x + button.width) * scaleFactor
                 && mouseY - (this.pos.y * scaleFactor) >= button.pos.y * scaleFactor && mouseY - (this.pos.y * scaleFactor) < (button.pos.y + button.height) * scaleFactor);
         }
+        for (let button of this.toolButtons) {
+            if (mouseX - (this.pos.x * scaleFactor) >= button.pos.x * scaleFactor && mouseX - (this.pos.x * scaleFactor) < (button.pos.x + button.width) * scaleFactor
+                && mouseY - (this.pos.y * scaleFactor) >= button.pos.y * scaleFactor && mouseY - (this.pos.y * scaleFactor) < (button.pos.y + button.height) * scaleFactor) {
+                button.actionFunction();
+            }
+        }
+    }
+
+    rotatePiecesLeft() {
+        this.pieceOrientation = (this.pieceOrientation + 3) % 4;
+    }
+
+    zoomIn() {
+        scaleFactor = min(scaleFactor + 1, maxScaleFactor);
+    }
+
+    zoomOut() {
+        scaleFactor = max(minScaleFactor, scaleFactor - 1);
+    }
+
+    resetBoard() {
+        resetBoard();
     }
 
 }

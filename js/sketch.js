@@ -6,14 +6,19 @@ let logoSpritesheet;
 let palette;
 
 let scaleFactor = 4;
+let scaleFactorLastFrame = scaleFactor;
+let minScaleFactor = 1;
+let maxScaleFactor = 6;
 
 
 function preload() {
+
     mainSpritesheet = loadImage('img/spritesheet.png');
     logoSpritesheet = loadImage('img/logo.png');
     board = new Board(9, 12, 16);
     sound = loadSound('sound.wav');
     palette = new Palette(board.width(), 0, 114, 144);
+
 }
 
 
@@ -27,6 +32,52 @@ function setup() {
     context.webkitImageSmoothingEnabled = false;
     context.msImageSmoothingEnabled = false;
     context.imageSmoothingEnabled = false;
+
+    resetBoard();
+
+}
+
+
+function draw() {
+
+    if (scaleFactor !== scaleFactorLastFrame) {
+        resizeCanvas((board.width() + palette.width) * scaleFactor, (max(board.height(), palette.height)) * scaleFactor);
+    }
+    scaleFactorLastFrame = scaleFactor;
+
+    background(0);
+
+    for (let piece of board.pieces) {
+        piece.update(balls);
+        piece.draw();
+    }
+
+    for (let ball of balls) {
+        ball.update(board);
+        ball.draw();
+    }
+    balls = balls.filter(ball => !ball.dead());
+
+    palette.draw();
+
+}
+
+
+function mousePressed() {
+
+    palette.onMousePressed();
+    let piece = palette.pieceToPlace();
+    if (piece) {
+        board.addPiece(piece, mouseX / scaleFactor, mouseY / scaleFactor);
+    }
+
+}
+
+
+function resetBoard() {
+
+    board = new Board(9, 12, 16);
+    balls = [];
 
     board.addPiece(new HorizontalPiece(), 16, 32);
     board.addPiece(new HorizontalPiece(), 32, 0);
@@ -73,36 +124,5 @@ function setup() {
 
     balls.push(new Ball(112, 88, 1, 0));
     balls.push(new Ball(104, 108, 0, -1));
-
-}
-
-
-function draw() {
-
-    background(0);
-
-    for (let piece of board.pieces) {
-        piece.update(balls);
-        piece.draw();
-    }
-
-    for (let ball of balls) {
-        ball.update(board);
-        ball.draw();
-    }
-    balls = balls.filter(ball => !ball.dead());
-
-    palette.draw();
-
-}
-
-
-function mousePressed() {
-
-    palette.onMousePressed();
-    let piece = palette.pieceToPlace();
-    if (piece) {
-        board.addPiece(piece, mouseX / scaleFactor, mouseY / scaleFactor);
-    }
 
 }
