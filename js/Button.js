@@ -17,10 +17,6 @@ class Button {
         this.associatedPiece = associatedPiece;
         this.active = false;
         this.labelSprites = labelSprites;
-        if (!Button.inactiveSprite) {
-            Button.inactiveSprite = new Sprite(mainSpritesheet, 304, 0, 22, 22);
-            Button.activeSprite = new Sprite(mainSpritesheet, 336, 0, 22, 22);
-        }
     }
 
     hovered(baseX, baseY) {

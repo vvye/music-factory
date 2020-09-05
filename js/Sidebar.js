@@ -17,11 +17,6 @@ class Sidebar {
         this.height = height;
         this.initButtons();
         this.pieceOrientation = Orientation.UP;
-        if (!Sidebar.backgroundSprite) {
-            Sidebar.backgroundSprite = new Sprite(mainSpritesheet, 272, 0, 16, 16);
-            Sidebar.borderSprite = new Sprite(mainSpritesheet, 288, 0, 16, 16);
-            Sidebar.logoSprite = new Sprite(logoSpritesheet, 0, 0, 87, 29);
-        }
     }
 
     initButtons() {
