@@ -1,14 +1,31 @@
 class GeneratorPiece extends Piece {
 
-    static sprite;
+    static sprites;
 
-    constructor() {
+    orientation;
+
+    constructor(orientation) {
         super();
+        this.orientation = orientation;
     }
 
     update(balls) {
         if (frameCount % 32 === 0 && balls.length < 100) {
-            let newBall = new Ball(this.pos.x + 16, this.pos.y + 8, 1, 0);
+            let newBall;
+            switch (this.orientation) {
+                case Orientation.UP:
+                    newBall = new Ball(this.pos.x + 8, this.pos.y, 0, -1);
+                    break;
+                case Orientation.RIGHT:
+                    newBall = new Ball(this.pos.x + 16, this.pos.y + 8, 1, 0);
+                    break;
+                case Orientation.DOWN:
+                    newBall = new Ball(this.pos.x + 8, this.pos.y + 16, 0, 1);
+                    break;
+                case Orientation.LEFT:
+                    newBall = new Ball(this.pos.x, this.pos.y + 8, -1, 0);
+                    break;
+            }
             balls.push(newBall);
         }
     }
@@ -19,7 +36,7 @@ class GeneratorPiece extends Piece {
 
     draw() {
         Piece.backgroundSprite.draw(this.pos.x, this.pos.y);
-        GeneratorPiece.sprite.draw(this.pos.x, this.pos.y);
+        GeneratorPiece.sprites[this.orientation].draw(this.pos.x, this.pos.y);
     }
 
 }

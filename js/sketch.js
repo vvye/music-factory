@@ -108,7 +108,7 @@ function resetBoard() {
     board.addPiece(new StraightPiece(Orientation.UP), 96, 64);
     board.addPiece(new StraightPiece(Orientation.LEFT), 16, 80);
     board.addPiece(new CrossJunctionPiece(), 96, 80);
-    board.addPiece(new GeneratorPiece(), 48, 80);
+    board.addPiece(new GeneratorPiece(Orientation.RIGHT), 48, 80);
     board.addPiece(new StraightPiece(Orientation.LEFT), 64, 80);
     board.addPiece(new StraightPiece(Orientation.LEFT), 80, 80);
     board.addPiece(new CurvePiece(Orientation.RIGHT), 32, 80);
@@ -134,6 +134,7 @@ function resetBoard() {
     balls.push(new Ball(104, 108, 0, -1));
 
 }
+
 
 function setupSprites() {
 
@@ -164,7 +165,12 @@ function setupSprites() {
         new Sprite(mainSpritesheet, 256, 32, 16, 16)
     ];
 
-    GeneratorPiece.sprite = new Sprite(mainSpritesheet, 464, 0, 16, 16, 4);
+    GeneratorPiece.sprites = {
+        [Orientation.UP]: new Sprite(mainSpritesheet, 512, 0, 16, 16, 4),
+        [Orientation.RIGHT]: new Sprite(mainSpritesheet, 464, 0, 16, 16, 4),
+        [Orientation.DOWN]: new Sprite(mainSpritesheet, 480, 0, 16, 16, 4),
+        [Orientation.LEFT]: new Sprite(mainSpritesheet, 496, 0, 16, 16, 4)
+    }
 
     JunctionPiece.sprites = {
         [Orientation.UP]: new Sprite(mainSpritesheet, 96, 0, 16, 16),

@@ -27,7 +27,7 @@ class Sidebar {
     initButtons() {
         this.toolbarButtons = [
             new ToolbarButton(23, 40, 16, 16, resetBoard, new Sprite(mainSpritesheet, 384, 0, 16, 16)),
-            new ToolbarButton(41, 40, 16, 16, this.rotatePiecesLeft.bind(this), new Sprite(mainSpritesheet, 400, 0, 16, 16)),
+            new ToolbarButton(41, 40, 16, 16, this.rotatePiecesRight.bind(this), new Sprite(mainSpritesheet, 400, 0, 16, 16)),
             new ToolbarButton(59, 40, 16, 16, this.zoomIn.bind(this), new Sprite(mainSpritesheet, 416, 0, 16, 16)),
             new ToolbarButton(77, 40, 16, 16, this.zoomOut.bind(this), new Sprite(mainSpritesheet, 432, 0, 16, 16)),
         ]
@@ -44,6 +44,7 @@ class Sidebar {
             new Button(60, 66, 22, 22, () => new CurvePiece(this.pieceOrientation), CurvePiece.sprites),
             new Button(86, 66, 22, 22, () => new JunctionPiece(this.pieceOrientation), JunctionPiece.sprites),
             new Button(8, 92, 22, 22, () => new CrossJunctionPiece(), CrossJunctionPiece.sprites),
+            new Button(34, 92, 22, 22, () => new GeneratorPiece(this.pieceOrientation), GeneratorPiece.sprites),
         ];
     }
 
@@ -92,8 +93,8 @@ class Sidebar {
         }
     }
 
-    rotatePiecesLeft() {
-        this.pieceOrientation = (this.pieceOrientation + 3) % 4;
+    rotatePiecesRight() {
+        this.pieceOrientation = (this.pieceOrientation + 1) % 4;
     }
 
     zoomIn() {
