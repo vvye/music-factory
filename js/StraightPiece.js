@@ -7,14 +7,6 @@ class StraightPiece extends Piece {
     constructor(orientation) {
         super();
         this.orientation = orientation;
-        if (!StraightPiece.sprites) {
-            StraightPiece.sprites = {
-                [Orientation.UP]: new Sprite(mainSpritesheet, 16, 0, 16, 16),
-                [Orientation.RIGHT]: new Sprite(mainSpritesheet, 0, 0, 16, 16),
-                [Orientation.DOWN]: new Sprite(mainSpritesheet, 16, 0, 16, 16),
-                [Orientation.LEFT]: new Sprite(mainSpritesheet, 0, 0, 16, 16),
-            };
-        }
     }
 
     draw() {

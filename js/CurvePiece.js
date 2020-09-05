@@ -9,14 +9,6 @@ class CurvePiece extends Piece {
         super();
         this.processedBalls = [];
         this.orientation = orientation;
-        if (!CurvePiece.sprites) {
-            CurvePiece.sprites = {
-                [Orientation.UP]: new Sprite(mainSpritesheet, 48, 0, 16, 16),
-                [Orientation.RIGHT]: new Sprite(mainSpritesheet, 64, 0, 16, 16),
-                [Orientation.DOWN]: new Sprite(mainSpritesheet, 80, 0, 16, 16),
-                [Orientation.LEFT]: new Sprite(mainSpritesheet, 32, 0, 16, 16)
-            }
-        }
     }
 
     draw() {

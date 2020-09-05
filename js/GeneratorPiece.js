@@ -4,9 +4,6 @@ class GeneratorPiece extends Piece {
 
     constructor() {
         super();
-        if (!GeneratorPiece.sprite) {
-            GeneratorPiece.sprite = new Sprite(mainSpritesheet, 464, 0, 16, 16, 4);
-        }
     }
 
     update(balls) {

@@ -15,6 +15,9 @@ function preload() {
 
     mainSpritesheet = loadImage('img/spritesheet.png');
     logoSpritesheet = loadImage('img/logo.png');
+
+    setupSprites();
+
     board = new Board(9, 12, 16);
     sound = loadSound('sound.wav');
     palette = new Sidebar(board.width(), 0, 114, 144);
@@ -129,5 +132,47 @@ function resetBoard() {
 
     balls.push(new Ball(112, 88, 1, 0));
     balls.push(new Ball(104, 108, 0, -1));
+
+}
+
+function setupSprites() {
+
+    StraightPiece.sprites = {
+        [Orientation.UP]: new Sprite(mainSpritesheet, 16, 0, 16, 16),
+        [Orientation.RIGHT]: new Sprite(mainSpritesheet, 0, 0, 16, 16),
+        [Orientation.DOWN]: new Sprite(mainSpritesheet, 16, 0, 16, 16),
+        [Orientation.LEFT]: new Sprite(mainSpritesheet, 0, 0, 16, 16),
+    };
+
+    CrossJunctionPiece.sprites = {
+        [Orientation.UP]: new Sprite(mainSpritesheet, 160, 0, 16, 16),
+        [Orientation.RIGHT]: new Sprite(mainSpritesheet, 160, 0, 16, 16),
+        [Orientation.DOWN]: new Sprite(mainSpritesheet, 160, 0, 16, 16),
+        [Orientation.LEFT]: new Sprite(mainSpritesheet, 160, 0, 16, 16),
+    };
+
+    CurvePiece.sprites = {
+        [Orientation.UP]: new Sprite(mainSpritesheet, 48, 0, 16, 16),
+        [Orientation.RIGHT]: new Sprite(mainSpritesheet, 64, 0, 16, 16),
+        [Orientation.DOWN]: new Sprite(mainSpritesheet, 80, 0, 16, 16),
+        [Orientation.LEFT]: new Sprite(mainSpritesheet, 32, 0, 16, 16)
+    };
+
+    EmptyPiece.sprites = [
+        new Sprite(mainSpritesheet, 256, 0, 16, 16),
+        new Sprite(mainSpritesheet, 256, 16, 16, 16),
+        new Sprite(mainSpritesheet, 256, 32, 16, 16)
+    ];
+
+    GeneratorPiece.sprite = new Sprite(mainSpritesheet, 464, 0, 16, 16, 4);
+
+    JunctionPiece.sprites = {
+        [Orientation.UP]: new Sprite(mainSpritesheet, 96, 0, 16, 16),
+        [Orientation.RIGHT]: new Sprite(mainSpritesheet, 112, 0, 16, 16),
+        [Orientation.DOWN]: new Sprite(mainSpritesheet, 128, 0, 16, 16),
+        [Orientation.LEFT]: new Sprite(mainSpritesheet, 144, 0, 16, 16)
+    };
+
+    SoundPiece.sprite = new Sprite(mainSpritesheet, 528, 0, 16, 16);
 
 }

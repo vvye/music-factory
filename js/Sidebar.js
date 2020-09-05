@@ -26,7 +26,7 @@ class Sidebar {
 
     initButtons() {
         this.toolbarButtons = [
-            new ToolbarButton(23, 40, 16, 16, this.resetBoard.bind(this), new Sprite(mainSpritesheet, 384, 0, 16, 16)),
+            new ToolbarButton(23, 40, 16, 16, resetBoard, new Sprite(mainSpritesheet, 384, 0, 16, 16)),
             new ToolbarButton(41, 40, 16, 16, this.rotatePiecesLeft.bind(this), new Sprite(mainSpritesheet, 400, 0, 16, 16)),
             new ToolbarButton(59, 40, 16, 16, this.zoomIn.bind(this), new Sprite(mainSpritesheet, 416, 0, 16, 16)),
             new ToolbarButton(77, 40, 16, 16, this.zoomOut.bind(this), new Sprite(mainSpritesheet, 432, 0, 16, 16)),
@@ -40,30 +40,10 @@ class Sidebar {
                 [Orientation.DOWN]: new Sprite(mainSpritesheet, 368, 0, 16, 16),
                 [Orientation.LEFT]: new Sprite(mainSpritesheet, 368, 0, 16, 16),
             }),
-            new Button(34, 66, 22, 22, () => {
-                return new StraightPiece(this.pieceOrientation);
-            }, {
-                [Orientation.UP]: new Sprite(mainSpritesheet, 16, 0, 16, 16),
-                [Orientation.RIGHT]: new Sprite(mainSpritesheet, 0, 0, 16, 16),
-                [Orientation.DOWN]: new Sprite(mainSpritesheet, 16, 0, 16, 16),
-                [Orientation.LEFT]: new Sprite(mainSpritesheet, 0, 0, 16, 16),
-            }),
-            new Button(60, 66, 22, 22, () => {
-                return new CurvePiece(this.pieceOrientation);
-            }, {
-                [Orientation.UP]: new Sprite(mainSpritesheet, 48, 0, 16, 16),
-                [Orientation.RIGHT]: new Sprite(mainSpritesheet, 64, 0, 16, 16),
-                [Orientation.DOWN]: new Sprite(mainSpritesheet, 80, 0, 16, 16),
-                [Orientation.LEFT]: new Sprite(mainSpritesheet, 32, 0, 16, 16),
-            }),
-            new Button(86, 66, 22, 22, () => {
-                return new JunctionPiece(this.pieceOrientation);
-            }, {
-                [Orientation.UP]: new Sprite(mainSpritesheet, 96, 0, 16, 16),
-                [Orientation.RIGHT]: new Sprite(mainSpritesheet, 112, 0, 16, 16),
-                [Orientation.DOWN]: new Sprite(mainSpritesheet, 128, 0, 16, 16),
-                [Orientation.LEFT]: new Sprite(mainSpritesheet, 144, 0, 16, 16),
-            }),
+            new Button(34, 66, 22, 22, () => new StraightPiece(this.pieceOrientation), StraightPiece.sprites),
+            new Button(60, 66, 22, 22, () => new CurvePiece(this.pieceOrientation), CurvePiece.sprites),
+            new Button(86, 66, 22, 22, () => new JunctionPiece(this.pieceOrientation), JunctionPiece.sprites),
+            new Button(8, 92, 22, 22, () => new CrossJunctionPiece(), CrossJunctionPiece.sprites),
         ];
     }
 
@@ -101,9 +81,9 @@ class Sidebar {
         if (!this.hovered()) {
             return;
         }
-        for (let button of this.toolbarButtons) {
-            if (button.hovered(this.pos.x, this.pos.y)) {
-                button.actionFunction();
+        for (let toolbarButton of this.toolbarButtons) {
+            if (toolbarButton.hovered(this.pos.x, this.pos.y)) {
+                toolbarButton.actionFunction();
                 return;
             }
         }
@@ -122,10 +102,6 @@ class Sidebar {
 
     zoomOut() {
         scaleFactor = max(minScaleFactor, scaleFactor - 1);
-    }
-
-    resetBoard() {
-        resetBoard();
     }
 
 }

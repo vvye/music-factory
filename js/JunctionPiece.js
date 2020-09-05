@@ -8,14 +8,6 @@ class JunctionPiece extends Piece {
         super();
         this.processedBalls = [];
         this.orientation = orientation;
-        if (!JunctionPiece.sprites) {
-            JunctionPiece.sprites = {
-                [Orientation.UP]: new Sprite(mainSpritesheet, 96, 0, 16, 16),
-                [Orientation.RIGHT]: new Sprite(mainSpritesheet, 112, 0, 16, 16),
-                [Orientation.DOWN]: new Sprite(mainSpritesheet, 128, 0, 16, 16),
-                [Orientation.LEFT]: new Sprite(mainSpritesheet, 144, 0, 16, 16)
-            };
-        }
     }
 
     onBallEnter(ball) {
