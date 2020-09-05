@@ -51,6 +51,7 @@ class Sidebar {
     }
 
     draw() {
+        cursor('default');
         for (let y = 0; y < this.height; y += 16) {
             for (let x = 0; x < this.width; x += 16) {
                 Sidebar.backgroundSprite.draw(this.pos.x + x, this.pos.y + y);
@@ -59,9 +60,15 @@ class Sidebar {
         }
         Sidebar.logoSprite.draw(this.pos.x + 14, this.pos.y + 4);
         for (let button of this.buttons) {
+            if (button.hovered(this.pos.x, this.pos.y)) {
+                cursor(HAND);
+            }
             button.draw(this.pos.x, this.pos.y, this.pieceOrientation);
         }
         for (let button of this.toolbarButtons) {
+            if (button.hovered(this.pos.x, this.pos.y)) {
+                cursor(HAND);
+            }
             button.draw(this.pos.x, this.pos.y);
         }
     }
