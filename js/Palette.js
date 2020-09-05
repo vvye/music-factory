@@ -33,7 +33,7 @@ class Palette {
         ]
         this.buttons = [
             new Button(8, 66, 22, 22, () => new EmptyPiece(), new Sprite(mainSpritesheet, 368, 0, 16, 16)),
-            new Button(34, 66, 22, 22, () => new HorizontalPiece(), new Sprite(mainSpritesheet, 0, 0, 16, 16)),
+            new Button(34, 66, 22, 22, () => new StraightPiece(), new Sprite(mainSpritesheet, 0, 0, 16, 16)),
             new Button(60, 66, 22, 22, () => new CurvePiece(this.pieceOrientation), new Sprite(mainSpritesheet, 32, 0, 16, 16)),
             new Button(86, 66, 22, 22, () => new JunctionPiece(this.pieceOrientation), new Sprite(mainSpritesheet, 96, 0, 16, 16)),
         ];
