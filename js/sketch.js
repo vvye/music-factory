@@ -25,7 +25,6 @@ function preload() {
 function setup() {
 
     let canvas = createCanvas((board.width() + palette.width) * scaleFactor, (max(board.height(), palette.height)) * scaleFactor);
-    // nearest-neighbor interpolation
     let context = canvas.elt.getContext('2d');
     context.imageSmoothingEnabled = false;
     context.mozImageSmoothingEnabled = false;
@@ -66,6 +65,10 @@ function draw() {
 function mousePressed() {
 
     palette.onMousePressed();
+    if (palette.hovered()) {
+        return;
+    }
+
     let piece = palette.pieceToPlace();
     if (piece) {
         board.addPiece(piece, mouseX / scaleFactor, mouseY / scaleFactor);
@@ -90,24 +93,26 @@ function resetBoard() {
     board.addPiece(new VerticalPiece(), 32, 96);
     board.addPiece(new VerticalPiece(), 96, 96);
     board.addPiece(new HorizontalPiece(), 32, 112);
-    board.addPiece(new CurvePiece(CurvePiece.directions.BOTTOM_RIGHT), 32, 32);
+    board.addPiece(new CurvePiece(Orientation.DOWN), 32, 32);
     board.addPiece(new HorizontalPiece(), 48, 32);
     board.addPiece(new HorizontalPiece(), 64, 32);
     board.addPiece(new HorizontalPiece(), 80, 32);
     board.addPiece(new HorizontalPiece(), 96, 0);
     board.addPiece(new HorizontalPiece(), 96, 112);
-    board.addPiece(new CurvePiece(CurvePiece.directions.BOTTOM_LEFT), 96, 32);
+    board.addPiece(new CurvePiece(Orientation.LEFT), 96, 32);
     board.addPiece(new HorizontalPiece(), 112, 32);
     board.addPiece(new VerticalPiece(), 96, 48);
     board.addPiece(new VerticalPiece(), 96, 64);
     board.addPiece(new HorizontalPiece(), 16, 80);
-    board.addPiece(new CurvePiece(CurvePiece.directions.TOP_LEFT), 96, 80);
+    board.addPiece(new CurvePiece(Orientation.UP), 96, 80);
     board.addPiece(new GeneratorPiece(), 48, 80);
     board.addPiece(new HorizontalPiece(), 64, 80);
     board.addPiece(new HorizontalPiece(), 80, 80);
-    board.addPiece(new CurvePiece(CurvePiece.directions.TOP_RIGHT), 32, 80);
+    board.addPiece(new CurvePiece(Orientation.RIGHT), 32, 80);
     board.addPiece(new HorizontalPiece(), 112, 80);
-    board.addPiece(new JunctionPiece(), 32, 48);
+    board.addPiece(new JunctionPiece(Orientation.UP), 32, 48);
+    board.addPiece(new JunctionPiece(Orientation.RIGHT), 48, 48);
+    board.addPiece(new JunctionPiece(Orientation.LEFT), 16, 48);
     board.addPiece(new SoundPiece(sound), 32, 64);
 
     balls.push(new Ball(64, 40, -1, 0));

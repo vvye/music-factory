@@ -84,4 +84,24 @@ class Ball {
         this.speed.y *= -1;
     }
 
+    absSpeed() {
+        return max(abs(this.speed.x), abs(this.speed.y))
+    }
+
+    moveUp() {
+        [this.speed.x, this.speed.y] = [0, -this.absSpeed()];
+    }
+
+    moveRight() {
+        [this.speed.x, this.speed.y] = [this.absSpeed(), 0];
+    }
+
+    moveDown() {
+        [this.speed.x, this.speed.y] = [0, this.absSpeed()];
+    }
+
+    moveLeft() {
+        [this.speed.x, this.speed.y] = [-this.absSpeed(), 0];
+    }
+
 }

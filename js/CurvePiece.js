@@ -1,56 +1,48 @@
 class CurvePiece extends Piece {
 
-    static directions = {TOP_LEFT: 0, TOP_RIGHT: 1, BOTTOM_LEFT: 2, BOTTOM_RIGHT: 3};
-    static topLeftSprite;
-    static topRightSprite;
-    static bottomLeftSprite;
-    static bottomRightSprite;
+    static sprites;
 
     processedBalls;
-    direction;
+    orientation;
 
-    constructor(direction) {
+    constructor(orientation) {
         super();
         this.processedBalls = [];
-        this.direction = direction;
-        if (!CurvePiece.topLeftSprite) {
-            CurvePiece.topLeftSprite = new Sprite(mainSpritesheet, 48, 0, 16, 16);
-            CurvePiece.topRightSprite = new Sprite(mainSpritesheet, 64, 0, 16, 16);
-            CurvePiece.bottomLeftSprite = new Sprite(mainSpritesheet, 32, 0, 16, 16);
-            CurvePiece.bottomRightSprite = new Sprite(mainSpritesheet, 80, 0, 16, 16);
+        this.orientation = orientation;
+        if (!CurvePiece.sprites) {
+            CurvePiece.sprites = {
+                [Orientation.UP]: new Sprite(mainSpritesheet, 48, 0, 16, 16),
+                [Orientation.RIGHT]: new Sprite(mainSpritesheet, 64, 0, 16, 16),
+                [Orientation.DOWN]: new Sprite(mainSpritesheet, 80, 0, 16, 16),
+                [Orientation.LEFT]: new Sprite(mainSpritesheet, 32, 0, 16, 16)
+            }
         }
     }
 
     draw() {
-        let sprite = {
-            [CurvePiece.directions.BOTTOM_LEFT]: CurvePiece.bottomLeftSprite,
-            [CurvePiece.directions.TOP_LEFT]: CurvePiece.topLeftSprite,
-            [CurvePiece.directions.TOP_RIGHT]: CurvePiece.topRightSprite,
-            [CurvePiece.directions.BOTTOM_RIGHT]: CurvePiece.bottomRightSprite,
-        }[this.direction];
         Piece.backgroundSprite.draw(this.pos.x, this.pos.y);
-        sprite.draw(this.pos.x, this.pos.y);
+        CurvePiece.sprites[this.orientation].draw(this.pos.x, this.pos.y);
     }
 
     onBallEnter(ball) {
-        switch (this.direction) {
-            case CurvePiece.directions.TOP_LEFT:
+        switch (this.orientation) {
+            case Orientation.UP:
                 if (!(ball.movingRight() || ball.movingDown())) {
                     ball.rebound();
                 }
                 break;
-            case CurvePiece.directions.TOP_RIGHT:
+            case Orientation.RIGHT:
                 if (!(ball.movingLeft() || ball.movingDown())) {
                     ball.rebound();
                 }
                 break;
-            case CurvePiece.directions.BOTTOM_LEFT:
-                if (!(ball.movingRight() || ball.movingUp())) {
+            case Orientation.DOWN:
+                if (!(ball.movingLeft() || ball.movingUp())) {
                     ball.rebound();
                 }
                 break;
-            case CurvePiece.directions.BOTTOM_RIGHT:
-                if (!(ball.movingLeft() || ball.movingUp())) {
+            case Orientation.LEFT:
+                if (!(ball.movingRight() || ball.movingUp())) {
                     ball.rebound();
                 }
                 break;
@@ -63,13 +55,13 @@ class CurvePiece extends Piece {
         }
         if (this.ballNearCenter(ball)) {
             this.setBallToCenter(ball);
-            switch (this.direction) {
-                case CurvePiece.directions.TOP_LEFT:
-                case CurvePiece.directions.BOTTOM_RIGHT:
+            switch (this.orientation) {
+                case Orientation.UP:
+                case Orientation.DOWN:
                     [ball.speed.x, ball.speed.y] = [-ball.speed.y, -ball.speed.x];
                     break;
-                case CurvePiece.directions.TOP_RIGHT:
-                case CurvePiece.directions.BOTTOM_LEFT:
+                case Orientation.LEFT:
+                case Orientation.RIGHT:
                     [ball.speed.x, ball.speed.y] = [ball.speed.y, ball.speed.x];
                     break;
             }

@@ -34,8 +34,8 @@ class Palette {
         this.buttons = [
             new Button(8, 66, 22, 22, () => new EmptyPiece(), new Sprite(mainSpritesheet, 368, 0, 16, 16)),
             new Button(34, 66, 22, 22, () => new HorizontalPiece(), new Sprite(mainSpritesheet, 0, 0, 16, 16)),
-            new Button(60, 66, 22, 22, () => new CurvePiece(CurvePiece.directions.BOTTOM_LEFT), new Sprite(mainSpritesheet, 32, 0, 16, 16)),
-            new Button(86, 66, 22, 22, () => new JunctionPiece(), new Sprite(mainSpritesheet, 96, 0, 16, 16)),
+            new Button(60, 66, 22, 22, () => new CurvePiece(this.pieceOrientation), new Sprite(mainSpritesheet, 32, 0, 16, 16)),
+            new Button(86, 66, 22, 22, () => new JunctionPiece(this.pieceOrientation), new Sprite(mainSpritesheet, 96, 0, 16, 16)),
         ];
     }
 
@@ -64,20 +64,25 @@ class Palette {
         }
     }
 
+    hovered() {
+        return mouseX >= this.pos.x * scaleFactor && mouseX < (this.pos.x + this.width) * scaleFactor
+            && mouseY >= this.pos.y * scaleFactor && mouseY < (this.pos.y + this.height) * scaleFactor;
+    }
+
     onMousePressed() {
-        if (mouseX < this.pos.x * scaleFactor || mouseX > (this.pos.x + this.width) * scaleFactor
-            || mouseY < this.pos.y * scaleFactor || mouseY > (this.pos.y + this.height) * scaleFactor) {
+        if (!this.hovered()) {
             return;
-        }
-        for (let button of this.buttons) {
-            button.active = (mouseX - (this.pos.x * scaleFactor) >= button.pos.x * scaleFactor && mouseX - (this.pos.x * scaleFactor) < (button.pos.x + button.width) * scaleFactor
-                && mouseY - (this.pos.y * scaleFactor) >= button.pos.y * scaleFactor && mouseY - (this.pos.y * scaleFactor) < (button.pos.y + button.height) * scaleFactor);
         }
         for (let button of this.toolButtons) {
             if (mouseX - (this.pos.x * scaleFactor) >= button.pos.x * scaleFactor && mouseX - (this.pos.x * scaleFactor) < (button.pos.x + button.width) * scaleFactor
                 && mouseY - (this.pos.y * scaleFactor) >= button.pos.y * scaleFactor && mouseY - (this.pos.y * scaleFactor) < (button.pos.y + button.height) * scaleFactor) {
                 button.actionFunction();
+                return;
             }
+        }
+        for (let button of this.buttons) {
+            button.active = (mouseX - (this.pos.x * scaleFactor) >= button.pos.x * scaleFactor && mouseX - (this.pos.x * scaleFactor) < (button.pos.x + button.width) * scaleFactor
+                && mouseY - (this.pos.y * scaleFactor) >= button.pos.y * scaleFactor && mouseY - (this.pos.y * scaleFactor) < (button.pos.y + button.height) * scaleFactor);
         }
     }
 
