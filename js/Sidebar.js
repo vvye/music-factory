@@ -102,15 +102,13 @@ class Sidebar {
             return;
         }
         for (let button of this.toolbarButtons) {
-            if (mouseX - (this.pos.x * scaleFactor) >= button.pos.x * scaleFactor && mouseX - (this.pos.x * scaleFactor) < (button.pos.x + button.width) * scaleFactor
-                && mouseY - (this.pos.y * scaleFactor) >= button.pos.y * scaleFactor && mouseY - (this.pos.y * scaleFactor) < (button.pos.y + button.height) * scaleFactor) {
+            if (button.hovered(this.pos.x, this.pos.y)) {
                 button.actionFunction();
                 return;
             }
         }
         for (let button of this.buttons) {
-            button.active = (mouseX - (this.pos.x * scaleFactor) >= button.pos.x * scaleFactor && mouseX - (this.pos.x * scaleFactor) < (button.pos.x + button.width) * scaleFactor
-                && mouseY - (this.pos.y * scaleFactor) >= button.pos.y * scaleFactor && mouseY - (this.pos.y * scaleFactor) < (button.pos.y + button.height) * scaleFactor);
+            button.active = button.hovered(this.pos.x, this.pos.y) && !button.active;
         }
     }
 

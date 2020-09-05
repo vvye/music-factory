@@ -23,6 +23,13 @@ class Button {
         }
     }
 
+    hovered(baseX, baseY) {
+        return mouseX - (baseX * scaleFactor) >= this.pos.x * scaleFactor
+            && mouseX - (baseX * scaleFactor) < (this.pos.x + this.width) * scaleFactor
+            && mouseY - (baseY * scaleFactor) >= this.pos.y * scaleFactor
+            && mouseY - (baseY * scaleFactor) < (this.pos.y + this.height) * scaleFactor;
+    }
+
     draw(baseX, baseY, pieceOrientation) {
         let sprite = this.active ? Button.activeSprite : Button.inactiveSprite;
         let yOffset = this.active ? 1 : 0;
