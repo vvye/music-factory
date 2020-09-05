@@ -1,25 +1,22 @@
 class SoundPiece extends Piece {
 
-    static sprite;
+    static sprites;
 
-    sound;
+    instrument;
 
-    constructor(sound) {
+    constructor(instrument) {
         super();
-        this.sound = sound;
-        if (!SoundPiece.sprite) {
-            SoundPiece.sprite = new Sprite(mainSpritesheet, 528, 0, 16, 16);
-        }
+        this.instrument = instrument;
     }
 
     onBallEnter(ball) {
-        this.sound.play();
+        random(sounds[this.instrument]).play();
         ball.die();
     }
 
     draw() {
         Piece.backgroundSprite.draw(this.pos.x, this.pos.y);
-        SoundPiece.sprite.draw(this.pos.x, this.pos.y);
+        SoundPiece.sprites[this.instrument].draw(this.pos.x, this.pos.y);
     }
 
 }

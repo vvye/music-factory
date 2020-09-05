@@ -1,6 +1,6 @@
 let board;
 let balls = [];
-let sound;
+let sounds;
 let mainSpritesheet;
 let logoSpritesheet;
 let palette;
@@ -19,7 +19,13 @@ function preload() {
     setupSprites();
 
     board = new Board(9, 12, 16);
-    sound = loadSound('sound.wav');
+    sounds = {
+        [Instrument.PIANO]: [1, 2, 3, 4, 5].map(i => loadSound('sound/piano-' + i + '.mp3')),
+        [Instrument.GUITAR]: [1, 2, 3, 4, 5].map(i => loadSound('sound/guitar-' + i + '.mp3')),
+        [Instrument.FLUTE]: [1, 2, 3, 4, 5].map(i => loadSound('sound/flute-' + i + '.mp3')),
+        [Instrument.DRUM]: [loadSound('sound/drum.mp3')],
+        [Instrument.DING]: [loadSound('sound/ding.mp3')],
+    };
     palette = new Sidebar(board.width(), 0, 114, 144);
 
 }
@@ -116,7 +122,7 @@ function resetBoard() {
     board.addPiece(new JunctionPiece(Orientation.UP), 32, 48);
     board.addPiece(new JunctionPiece(Orientation.RIGHT), 48, 48);
     board.addPiece(new JunctionPiece(Orientation.LEFT), 16, 48);
-    board.addPiece(new SoundPiece(sound), 32, 64);
+    board.addPiece(new SoundPiece(Instrument.PIANO), 32, 64);
 
     balls.push(new Ball(64, 40, -1, 0));
     balls.push(new Ball(48, 40, 1, 0));
@@ -183,7 +189,13 @@ function setupSprites() {
         [Orientation.LEFT]: new Sprite(mainSpritesheet, 144, 0, 16, 16)
     };
 
-    SoundPiece.sprite = new Sprite(mainSpritesheet, 528, 0, 16, 16);
+    SoundPiece.sprites = {
+        [Instrument.PIANO]: new Sprite(mainSpritesheet, 528, 0, 16, 16),
+        [Instrument.GUITAR]: new Sprite(mainSpritesheet, 544, 0, 16, 16),
+        [Instrument.FLUTE]: new Sprite(mainSpritesheet, 560, 0, 16, 16),
+        [Instrument.DRUM]: new Sprite(mainSpritesheet, 576, 0, 16, 16),
+        [Instrument.DING]: new Sprite(mainSpritesheet, 592, 0, 16, 16),
+    };
 
     StraightPiece.sprites = {
         [Orientation.UP]: new Sprite(mainSpritesheet, 16, 0, 16, 16),
