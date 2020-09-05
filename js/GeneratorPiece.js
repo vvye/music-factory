@@ -1,6 +1,7 @@
 class GeneratorPiece extends Piece {
 
     static sprites;
+    static animatedSprites;
 
     orientation;
 
@@ -9,7 +10,7 @@ class GeneratorPiece extends Piece {
         this.orientation = orientation;
     }
 
-    update(balls) {
+    update() {
         if (frameCount % 32 === 0 && balls.length < 100) {
             let newBall;
             switch (this.orientation) {
@@ -36,7 +37,7 @@ class GeneratorPiece extends Piece {
 
     draw() {
         Piece.backgroundSprite.draw(this.pos.x, this.pos.y);
-        GeneratorPiece.sprites[this.orientation].draw(this.pos.x, this.pos.y);
+        GeneratorPiece.animatedSprites[this.orientation].draw(this.pos.x, this.pos.y);
     }
 
 }

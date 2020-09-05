@@ -20,7 +20,7 @@ class Ball {
         }
     }
 
-    update(board) {
+    update() {
         this.pos.add(this.speed);
 
         let newContactedPiece = board.pieceAt(this.pos.x, this.pos.y);

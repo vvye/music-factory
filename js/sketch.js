@@ -50,12 +50,12 @@ function draw() {
     background(0);
 
     for (let piece of board.pieces) {
-        piece.update(balls);
+        piece.update();
         piece.draw();
     }
 
     for (let ball of balls) {
-        ball.update(board);
+        ball.update();
         ball.draw();
     }
     balls = balls.filter(ball => !ball.dead());
@@ -166,6 +166,13 @@ function setupSprites() {
     ];
 
     GeneratorPiece.sprites = {
+        [Orientation.UP]: new Sprite(mainSpritesheet, 512, 0, 16, 16),
+        [Orientation.RIGHT]: new Sprite(mainSpritesheet, 464, 0, 16, 16),
+        [Orientation.DOWN]: new Sprite(mainSpritesheet, 480, 0, 16, 16),
+        [Orientation.LEFT]: new Sprite(mainSpritesheet, 496, 0, 16, 16)
+    }
+
+    GeneratorPiece.animatedSprites = {
         [Orientation.UP]: new Sprite(mainSpritesheet, 512, 0, 16, 16, 4),
         [Orientation.RIGHT]: new Sprite(mainSpritesheet, 464, 0, 16, 16, 4),
         [Orientation.DOWN]: new Sprite(mainSpritesheet, 480, 0, 16, 16, 4),
