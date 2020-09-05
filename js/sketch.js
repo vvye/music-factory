@@ -175,19 +175,26 @@ function setupSprites() {
         new Sprite(mainSpritesheet, 256, 32, 16, 16)
     ];
 
+    EndPiece.sprites = {
+        [Orientation.UP]: new Sprite(mainSpritesheet, 240, 0, 16, 16),
+        [Orientation.RIGHT]: new Sprite(mainSpritesheet, 192, 0, 16, 16),
+        [Orientation.DOWN]: new Sprite(mainSpritesheet, 208, 0, 16, 16),
+        [Orientation.LEFT]: new Sprite(mainSpritesheet, 224, 0, 16, 16)
+    };
+
     GeneratorPiece.sprites = {
         [Orientation.UP]: new Sprite(mainSpritesheet, 512, 0, 16, 16),
         [Orientation.RIGHT]: new Sprite(mainSpritesheet, 464, 0, 16, 16),
         [Orientation.DOWN]: new Sprite(mainSpritesheet, 480, 0, 16, 16),
         [Orientation.LEFT]: new Sprite(mainSpritesheet, 496, 0, 16, 16)
-    }
+    };
 
     GeneratorPiece.animatedSprites = {
         [Orientation.UP]: new Sprite(mainSpritesheet, 512, 0, 16, 16, 4),
         [Orientation.RIGHT]: new Sprite(mainSpritesheet, 464, 0, 16, 16, 4),
         [Orientation.DOWN]: new Sprite(mainSpritesheet, 480, 0, 16, 16, 4),
         [Orientation.LEFT]: new Sprite(mainSpritesheet, 496, 0, 16, 16, 4)
-    }
+    };
 
     JunctionPiece.sprites = {
         [Orientation.UP]: new Sprite(mainSpritesheet, 96, 0, 16, 16),
