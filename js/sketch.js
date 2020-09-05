@@ -138,6 +138,8 @@ function resetBoard() {
 
 function setupSprites() {
 
+    Ball.sprite = new Sprite(mainSpritesheet, 448, 0, 7, 7);
+
     Piece.backgroundSprite = new Sprite(mainSpritesheet, 256, 0, 16, 16);
 
     CrossJunctionPiece.sprites = {

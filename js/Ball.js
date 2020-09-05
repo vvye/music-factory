@@ -15,9 +15,6 @@ class Ball {
         this.speed = createVector(xSpeed, ySpeed);
         this.lifetime = Ball.lifetime;
         this.contactedPiece = null;
-        if (!Ball.sprite) {
-            Ball.sprite = new Sprite(mainSpritesheet, 448, 0, 7, 7);
-        }
     }
 
     update() {
