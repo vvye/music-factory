@@ -104,7 +104,7 @@ function resetBoard() {
     board.addPiece(new StraightPiece(Orientation.UP), 96, 48);
     board.addPiece(new StraightPiece(Orientation.UP), 96, 64);
     board.addPiece(new StraightPiece(Orientation.LEFT), 16, 80);
-    board.addPiece(new CurvePiece(Orientation.UP), 96, 80);
+    board.addPiece(new CrossJunctionPiece(), 96, 80);
     board.addPiece(new GeneratorPiece(), 48, 80);
     board.addPiece(new StraightPiece(Orientation.LEFT), 64, 80);
     board.addPiece(new StraightPiece(Orientation.LEFT), 80, 80);

@@ -32,10 +32,38 @@ class Palette {
             new ToolbarButton(77, 40, 16, 16, this.zoomOut.bind(this), new Sprite(mainSpritesheet, 432, 0, 16, 16)),
         ]
         this.buttons = [
-            new Button(8, 66, 22, 22, () => new EmptyPiece(), new Sprite(mainSpritesheet, 368, 0, 16, 16)),
-            new Button(34, 66, 22, 22, () => new StraightPiece(), new Sprite(mainSpritesheet, 0, 0, 16, 16)),
-            new Button(60, 66, 22, 22, () => new CurvePiece(this.pieceOrientation), new Sprite(mainSpritesheet, 32, 0, 16, 16)),
-            new Button(86, 66, 22, 22, () => new JunctionPiece(this.pieceOrientation), new Sprite(mainSpritesheet, 96, 0, 16, 16)),
+            new Button(8, 66, 22, 22, () => {
+                return new EmptyPiece();
+            }, {
+                [Orientation.UP]: new Sprite(mainSpritesheet, 368, 0, 16, 16),
+                [Orientation.RIGHT]: new Sprite(mainSpritesheet, 368, 0, 16, 16),
+                [Orientation.DOWN]: new Sprite(mainSpritesheet, 368, 0, 16, 16),
+                [Orientation.LEFT]: new Sprite(mainSpritesheet, 368, 0, 16, 16),
+            }),
+            new Button(34, 66, 22, 22, () => {
+                return new StraightPiece(this.pieceOrientation);
+            }, {
+                [Orientation.UP]: new Sprite(mainSpritesheet, 16, 0, 16, 16),
+                [Orientation.RIGHT]: new Sprite(mainSpritesheet, 0, 0, 16, 16),
+                [Orientation.DOWN]: new Sprite(mainSpritesheet, 16, 0, 16, 16),
+                [Orientation.LEFT]: new Sprite(mainSpritesheet, 0, 0, 16, 16),
+            }),
+            new Button(60, 66, 22, 22, () => {
+                return new CurvePiece(this.pieceOrientation);
+            }, {
+                [Orientation.UP]: new Sprite(mainSpritesheet, 48, 0, 16, 16),
+                [Orientation.RIGHT]: new Sprite(mainSpritesheet, 64, 0, 16, 16),
+                [Orientation.DOWN]: new Sprite(mainSpritesheet, 80, 0, 16, 16),
+                [Orientation.LEFT]: new Sprite(mainSpritesheet, 32, 0, 16, 16),
+            }),
+            new Button(86, 66, 22, 22, () => {
+                return new JunctionPiece(this.pieceOrientation);
+            }, {
+                [Orientation.UP]: new Sprite(mainSpritesheet, 96, 0, 16, 16),
+                [Orientation.RIGHT]: new Sprite(mainSpritesheet, 112, 0, 16, 16),
+                [Orientation.DOWN]: new Sprite(mainSpritesheet, 128, 0, 16, 16),
+                [Orientation.LEFT]: new Sprite(mainSpritesheet, 144, 0, 16, 16),
+            }),
         ];
     }
 
@@ -57,7 +85,7 @@ class Palette {
         }
         Palette.logoSprite.draw(this.pos.x + 14, this.pos.y + 4);
         for (let button of this.buttons) {
-            button.draw(this.pos.x, this.pos.y);
+            button.draw(this.pos.x, this.pos.y, this.pieceOrientation);
         }
         for (let button of this.toolButtons) {
             button.draw(this.pos.x, this.pos.y);
