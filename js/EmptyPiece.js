@@ -13,16 +13,10 @@ class EmptyPiece extends Piece {
         this.sprite.draw(this.pos.x, this.pos.y);
     }
 
-    onBallEnter(ball) {
-        ball.lifetime = 12;
-    }
-
     onBallInside(ball) {
-        ball.lifetime--;
-    }
-
-    onBallLeave(ball) {
-        ball.lifetime = 0;
+        if (this.ballNearCenter(ball)) {
+            ball.die();
+        }
     }
 
 }

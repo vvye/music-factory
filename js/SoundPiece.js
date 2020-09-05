@@ -7,6 +7,9 @@ class SoundPiece extends Piece {
     constructor(sound) {
         super();
         this.sound = sound;
+        if (!SoundPiece.sprite) {
+            SoundPiece.sprite = new Sprite(mainSpritesheet, 528, 0, 16, 16);
+        }
     }
 
     onBallEnter(ball) {

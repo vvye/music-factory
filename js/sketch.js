@@ -58,7 +58,7 @@ function draw() {
         ball.update();
         ball.draw();
     }
-    balls = balls.filter(ball => !ball.dead());
+    balls = balls.filter(ball => !ball.dead);
 
     palette.draw();
 

@@ -1,19 +1,17 @@
 class Ball {
-
-    static lifetime = 25;
     static sprite;
 
     id;
     pos;
     speed;
-    lifetime;
+    dead;
     contactedPiece;
 
     constructor(x, y, xSpeed, ySpeed) {
         this.id = Math.random();
         this.pos = createVector(x, y);
         this.speed = createVector(xSpeed, ySpeed);
-        this.lifetime = Ball.lifetime;
+        this.dead = false;
         this.contactedPiece = null;
     }
 
@@ -33,20 +31,12 @@ class Ball {
         if (this.contactedPiece) {
             this.contactedPiece.onBallInside(this);
         } else {
-            this.lifetime = 0;
+            this.die();
         }
     }
 
-    resetLifetime() {
-        this.lifetime = Ball.lifetime;
-    }
-
     die() {
-        this.lifetime = 0;
-    }
-
-    dead() {
-        return this.lifetime <= 0;
+        this.dead = true;
     }
 
     draw() {

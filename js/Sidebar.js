@@ -45,6 +45,7 @@ class Sidebar {
             new Button(86, 66, 22, 22, () => new JunctionPiece(this.pieceOrientation), JunctionPiece.sprites),
             new Button(8, 92, 22, 22, () => new CrossJunctionPiece(), CrossJunctionPiece.sprites),
             new Button(34, 92, 22, 22, () => new GeneratorPiece(this.pieceOrientation), GeneratorPiece.sprites),
+            new Button(60, 92, 22, 22, () => new SoundPiece(Instrument.PIANO), GeneratorPiece.sprites),
         ];
     }
 
