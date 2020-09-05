@@ -8,15 +8,15 @@ class Button {
     height;
     associatedPiece;
     active;
-    labelSprites;
+    labelSprite;
 
-    constructor(x, y, width, height, associatedPiece, labelSprites) {
+    constructor(x, y, width, height, associatedPiece, labelSprite) {
         this.pos = createVector(x, y);
         this.width = width;
         this.height = height;
         this.associatedPiece = associatedPiece;
         this.active = false;
-        this.labelSprites = labelSprites;
+        this.labelSprite = labelSprite;
     }
 
     hovered(baseX, baseY) {
@@ -30,7 +30,7 @@ class Button {
         let sprite = this.active ? Button.activeSprite : Button.inactiveSprite;
         let yOffset = this.active ? 1 : 0;
         sprite.draw(baseX + this.pos.x, baseY + this.pos.y + yOffset);
-        this.labelSprites[pieceOrientation].draw(baseX + this.pos.x + 3, baseY + this.pos.y + yOffset + 3);
+        this.labelSprite.draw(baseX + this.pos.x + 3, baseY + this.pos.y + yOffset + 3);
     }
 
 }

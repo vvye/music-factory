@@ -27,47 +27,17 @@ class Sidebar {
             new ToolbarButton(77, 40, 16, 16, this.zoomOut.bind(this), new Sprite(mainSpritesheet, 432, 0, 16, 16)),
         ]
         this.buttons = [
-            new Button(8, 66, 22, 22, () => new EmptyPiece(), {
-                [Orientation.UP]: new Sprite(mainSpritesheet, 368, 0, 16, 16),
-                [Orientation.RIGHT]: new Sprite(mainSpritesheet, 368, 0, 16, 16),
-                [Orientation.DOWN]: new Sprite(mainSpritesheet, 368, 0, 16, 16),
-                [Orientation.LEFT]: new Sprite(mainSpritesheet, 368, 0, 16, 16),
-            }),
-            new Button(34, 66, 22, 22, () => new StraightPiece(this.pieceOrientation), StraightPiece.sprites),
-            new Button(60, 66, 22, 22, () => new CurvePiece(this.pieceOrientation), CurvePiece.sprites),
-            new Button(86, 66, 22, 22, () => new JunctionPiece(this.pieceOrientation), JunctionPiece.sprites),
-            new Button(8, 92, 22, 22, () => new CrossJunctionPiece(), CrossJunctionPiece.sprites),
-            new Button(34, 92, 22, 22, () => new GeneratorPiece(this.pieceOrientation), GeneratorPiece.sprites),
-            new Button(60, 92, 22, 22, () => new SoundPiece(Instrument.PIANO), {
-                [Orientation.UP]: SoundPiece.sprites[Instrument.PIANO],
-                [Orientation.RIGHT]: SoundPiece.sprites[Instrument.PIANO],
-                [Orientation.DOWN]: SoundPiece.sprites[Instrument.PIANO],
-                [Orientation.LEFT]: SoundPiece.sprites[Instrument.PIANO],
-            }),
-            new Button(86, 92, 22, 22, () => new SoundPiece(Instrument.GUITAR), {
-                [Orientation.UP]: SoundPiece.sprites[Instrument.GUITAR],
-                [Orientation.RIGHT]: SoundPiece.sprites[Instrument.GUITAR],
-                [Orientation.DOWN]: SoundPiece.sprites[Instrument.GUITAR],
-                [Orientation.LEFT]: SoundPiece.sprites[Instrument.GUITAR],
-            }),
-            new Button(34, 118, 22, 22, () => new SoundPiece(Instrument.FLUTE), {
-                [Orientation.UP]: SoundPiece.sprites[Instrument.FLUTE],
-                [Orientation.RIGHT]: SoundPiece.sprites[Instrument.FLUTE],
-                [Orientation.DOWN]: SoundPiece.sprites[Instrument.FLUTE],
-                [Orientation.LEFT]: SoundPiece.sprites[Instrument.FLUTE],
-            }),
-            new Button(60, 118, 22, 22, () => new SoundPiece(Instrument.DRUM), {
-                [Orientation.UP]: SoundPiece.sprites[Instrument.DRUM],
-                [Orientation.RIGHT]: SoundPiece.sprites[Instrument.DRUM],
-                [Orientation.DOWN]: SoundPiece.sprites[Instrument.DRUM],
-                [Orientation.LEFT]: SoundPiece.sprites[Instrument.DRUM],
-            }),
-            new Button(86, 118, 22, 22, () => new SoundPiece(Instrument.DING), {
-                [Orientation.UP]: SoundPiece.sprites[Instrument.DING],
-                [Orientation.RIGHT]: SoundPiece.sprites[Instrument.DING],
-                [Orientation.DOWN]: SoundPiece.sprites[Instrument.DING],
-                [Orientation.LEFT]: SoundPiece.sprites[Instrument.DING],
-            })
+            new Button(8, 66, 22, 22, () => new EmptyPiece(), new Sprite(mainSpritesheet, 368, 0, 16, 16)),
+            new OrientedButton(34, 66, 22, 22, () => new StraightPiece(this.pieceOrientation), StraightPiece.sprites),
+            new OrientedButton(60, 66, 22, 22, () => new CurvePiece(this.pieceOrientation), CurvePiece.sprites),
+            new OrientedButton(86, 66, 22, 22, () => new JunctionPiece(this.pieceOrientation), JunctionPiece.sprites),
+            new OrientedButton(8, 92, 22, 22, () => new CrossJunctionPiece(), CrossJunctionPiece.sprites),
+            new OrientedButton(34, 92, 22, 22, () => new GeneratorPiece(this.pieceOrientation), GeneratorPiece.sprites),
+            new Button(60, 92, 22, 22, () => new SoundPiece(Instrument.PIANO), SoundPiece.sprites[Instrument.PIANO]),
+            new Button(86, 92, 22, 22, () => new SoundPiece(Instrument.GUITAR), SoundPiece.sprites[Instrument.GUITAR]),
+            new Button(34, 118, 22, 22, () => new SoundPiece(Instrument.FLUTE), SoundPiece.sprites[Instrument.FLUTE]),
+            new Button(60, 118, 22, 22, () => new SoundPiece(Instrument.DRUM), SoundPiece.sprites[Instrument.DRUM]),
+            new Button(86, 118, 22, 22, () => new SoundPiece(Instrument.DING), SoundPiece.sprites[Instrument.DING])
         ];
     }
 
