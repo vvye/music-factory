@@ -1,4 +1,4 @@
-class Palette {
+class Sidebar {
 
     static backgroundSprite;
     static borderSprite;
@@ -8,7 +8,7 @@ class Palette {
     width;
     height;
     buttons;
-    toolButtons;
+    toolbarButtons;
     pieceOrientation;
 
     constructor(x, y, width, height) {
@@ -17,15 +17,15 @@ class Palette {
         this.height = height;
         this.initButtons();
         this.pieceOrientation = Orientation.UP;
-        if (!Palette.backgroundSprite) {
-            Palette.backgroundSprite = new Sprite(mainSpritesheet, 272, 0, 16, 16);
-            Palette.borderSprite = new Sprite(mainSpritesheet, 288, 0, 16, 16);
-            Palette.logoSprite = new Sprite(logoSpritesheet, 0, 0, 87, 29);
+        if (!Sidebar.backgroundSprite) {
+            Sidebar.backgroundSprite = new Sprite(mainSpritesheet, 272, 0, 16, 16);
+            Sidebar.borderSprite = new Sprite(mainSpritesheet, 288, 0, 16, 16);
+            Sidebar.logoSprite = new Sprite(logoSpritesheet, 0, 0, 87, 29);
         }
     }
 
     initButtons() {
-        this.toolButtons = [
+        this.toolbarButtons = [
             new ToolbarButton(23, 40, 16, 16, this.resetBoard.bind(this), new Sprite(mainSpritesheet, 384, 0, 16, 16)),
             new ToolbarButton(41, 40, 16, 16, this.rotatePiecesLeft.bind(this), new Sprite(mainSpritesheet, 400, 0, 16, 16)),
             new ToolbarButton(59, 40, 16, 16, this.zoomIn.bind(this), new Sprite(mainSpritesheet, 416, 0, 16, 16)),
@@ -79,15 +79,15 @@ class Palette {
     draw() {
         for (let y = 0; y < this.height; y += 16) {
             for (let x = 0; x < this.width; x += 16) {
-                Palette.backgroundSprite.draw(this.pos.x + x, this.pos.y + y);
+                Sidebar.backgroundSprite.draw(this.pos.x + x, this.pos.y + y);
             }
-            Palette.borderSprite.draw(this.pos.x - 8, this.pos.y + y);
+            Sidebar.borderSprite.draw(this.pos.x - 8, this.pos.y + y);
         }
-        Palette.logoSprite.draw(this.pos.x + 14, this.pos.y + 4);
+        Sidebar.logoSprite.draw(this.pos.x + 14, this.pos.y + 4);
         for (let button of this.buttons) {
             button.draw(this.pos.x, this.pos.y, this.pieceOrientation);
         }
-        for (let button of this.toolButtons) {
+        for (let button of this.toolbarButtons) {
             button.draw(this.pos.x, this.pos.y);
         }
     }
@@ -101,7 +101,7 @@ class Palette {
         if (!this.hovered()) {
             return;
         }
-        for (let button of this.toolButtons) {
+        for (let button of this.toolbarButtons) {
             if (mouseX - (this.pos.x * scaleFactor) >= button.pos.x * scaleFactor && mouseX - (this.pos.x * scaleFactor) < (button.pos.x + button.width) * scaleFactor
                 && mouseY - (this.pos.y * scaleFactor) >= button.pos.y * scaleFactor && mouseY - (this.pos.y * scaleFactor) < (button.pos.y + button.height) * scaleFactor) {
                 button.actionFunction();

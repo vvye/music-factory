@@ -17,7 +17,7 @@ function preload() {
     logoSpritesheet = loadImage('img/logo.png');
     board = new Board(9, 12, 16);
     sound = loadSound('sound.wav');
-    palette = new Palette(board.width(), 0, 114, 144);
+    palette = new Sidebar(board.width(), 0, 114, 144);
 
 }
 
