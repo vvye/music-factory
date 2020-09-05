@@ -6,9 +6,6 @@ class Piece {
 
     constructor() {
         this.pos = createVector();
-        if (!Piece.backgroundSprite) {
-            Piece.backgroundSprite = new Sprite(mainSpritesheet, 256, 0, 16, 16);
-        }
     }
 
     update() {

@@ -138,12 +138,7 @@ function resetBoard() {
 
 function setupSprites() {
 
-    StraightPiece.sprites = {
-        [Orientation.UP]: new Sprite(mainSpritesheet, 16, 0, 16, 16),
-        [Orientation.RIGHT]: new Sprite(mainSpritesheet, 0, 0, 16, 16),
-        [Orientation.DOWN]: new Sprite(mainSpritesheet, 16, 0, 16, 16),
-        [Orientation.LEFT]: new Sprite(mainSpritesheet, 0, 0, 16, 16),
-    };
+    Piece.backgroundSprite = new Sprite(mainSpritesheet, 256, 0, 16, 16);
 
     CrossJunctionPiece.sprites = {
         [Orientation.UP]: new Sprite(mainSpritesheet, 160, 0, 16, 16),
@@ -187,5 +182,12 @@ function setupSprites() {
     };
 
     SoundPiece.sprite = new Sprite(mainSpritesheet, 528, 0, 16, 16);
+
+    StraightPiece.sprites = {
+        [Orientation.UP]: new Sprite(mainSpritesheet, 16, 0, 16, 16),
+        [Orientation.RIGHT]: new Sprite(mainSpritesheet, 0, 0, 16, 16),
+        [Orientation.DOWN]: new Sprite(mainSpritesheet, 16, 0, 16, 16),
+        [Orientation.LEFT]: new Sprite(mainSpritesheet, 0, 0, 16, 16),
+    };
 
 }
