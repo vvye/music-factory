@@ -91,9 +91,9 @@ class Sidebar {
         if (!this.hovered()) {
             return;
         }
-        for (let toolbarButton of this.toolbarButtons) {
-            if (toolbarButton.hovered()) {
-                toolbarButton.actionFunction();
+        for (let button of this.toolbarButtons) {
+            if (button.hovered()) {
+                button.actionFunction();
                 return;
             }
         }

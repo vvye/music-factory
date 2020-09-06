@@ -3,7 +3,7 @@ let balls = [];
 let sounds;
 let mainSpritesheet;
 let logoSpritesheet;
-let palette;
+let sidebar;
 
 let scaleFactor = 4;
 let scaleFactorLastFrame = scaleFactor;
@@ -26,14 +26,14 @@ function preload() {
         [Instrument.DRUM]: [loadSound('sound/drum.mp3')],
         [Instrument.DING]: [loadSound('sound/ding.mp3')],
     };
-    palette = new Sidebar(board.width(), 0, 114, 144);
+    sidebar = new Sidebar(board.width(), 0, 114, 144);
 
 }
 
 
 function setup() {
 
-    let canvas = createCanvas((board.width() + palette.width) * scaleFactor, (max(board.height(), palette.height)) * scaleFactor);
+    let canvas = createCanvas((board.width() + sidebar.width) * scaleFactor, (max(board.height(), sidebar.height)) * scaleFactor);
     let context = canvas.elt.getContext('2d');
     context.imageSmoothingEnabled = false;
     context.mozImageSmoothingEnabled = false;
@@ -49,7 +49,7 @@ function setup() {
 function draw() {
 
     if (scaleFactor !== scaleFactorLastFrame) {
-        resizeCanvas((board.width() + palette.width) * scaleFactor, (max(board.height(), palette.height)) * scaleFactor);
+        resizeCanvas((board.width() + sidebar.width) * scaleFactor, (max(board.height(), sidebar.height)) * scaleFactor);
     }
     scaleFactorLastFrame = scaleFactor;
 
@@ -66,19 +66,19 @@ function draw() {
     }
     balls = balls.filter(ball => !ball.dead);
 
-    palette.draw();
+    sidebar.draw();
 
 }
 
 
 function mousePressed() {
 
-    palette.onMousePressed();
-    if (palette.hovered()) {
+    sidebar.onMousePressed();
+    if (sidebar.hovered()) {
         return;
     }
 
-    let piece = palette.pieceToPlace();
+    let piece = sidebar.pieceToPlace();
     if (piece) {
         board.addPiece(piece, mouseX / scaleFactor, mouseY / scaleFactor);
     }
