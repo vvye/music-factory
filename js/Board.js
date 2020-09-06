@@ -1,7 +1,7 @@
 class Board {
 
-    static defaultBoard = '_____________g2______t0____t2___c2j2t3c0____s0__s0j1xj2s3j2g3'
-        + '_____t0c1xj0s4t0____g1t1j0j2c0__t0_______t0___________g0__________________';
+    static defaultBoard = '_____________g2___c3_______t2___t0_______s0__s1j1j2j2s3j2g3__'
+        + '___t0c1xj0s4t0____g1t1j0j2c0__t0_______t0___________g0__________________';
 
     rows;
     cols;
