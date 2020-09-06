@@ -1,6 +1,6 @@
 class CurvePiece extends Piece {
 
-    static sprites;
+    static sprite;
 
     processedBalls;
     orientation;
@@ -13,7 +13,7 @@ class CurvePiece extends Piece {
 
     draw() {
         Piece.backgroundSprite.draw(this.pos.x, this.pos.y);
-        CurvePiece.sprites[this.orientation].draw(this.pos.x, this.pos.y);
+        CurvePiece.sprite.draw(this.pos.x, this.pos.y, this.orientation);
     }
 
     onBallEnter(ball) {

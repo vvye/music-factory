@@ -1,6 +1,6 @@
 class StraightPiece extends Piece {
 
-    static sprites;
+    static sprite;
 
     orientation;
 
@@ -11,7 +11,7 @@ class StraightPiece extends Piece {
 
     draw() {
         Piece.backgroundSprite.draw(this.pos.x, this.pos.y);
-        StraightPiece.sprites[this.orientation].draw(this.pos.x, this.pos.y);
+        StraightPiece.sprite.draw(this.pos.x, this.pos.y, this.orientation);
     }
 
     onBallEnter(ball) {

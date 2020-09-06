@@ -38,7 +38,7 @@ class CrossJunctionPiece extends Piece {
 
     draw() {
         Piece.backgroundSprite.draw(this.pos.x, this.pos.y);
-        CrossJunctionPiece.sprites[Orientation.UP].draw(this.pos.x, this.pos.y);
+        CrossJunctionPiece.sprite.draw(this.pos.x, this.pos.y);
     }
 
 }

@@ -1,6 +1,6 @@
 class EndPiece extends Piece {
 
-    static sprites;
+    static sprite;
 
     processedBalls;
     orientation;
@@ -13,7 +13,7 @@ class EndPiece extends Piece {
 
     draw() {
         Piece.backgroundSprite.draw(this.pos.x, this.pos.y);
-        EndPiece.sprites[this.orientation].draw(this.pos.x, this.pos.y);
+        EndPiece.sprite.draw(this.pos.x, this.pos.y, this.orientation);
     }
 
     onBallEnter(ball) {

@@ -1,7 +1,7 @@
 class GeneratorPiece extends Piece {
 
-    static sprites;
-    static animatedSprites;
+    static sprite;
+    static animatedSprite;
 
     orientation;
 
@@ -37,7 +37,7 @@ class GeneratorPiece extends Piece {
 
     draw() {
         Piece.backgroundSprite.draw(this.pos.x, this.pos.y);
-        GeneratorPiece.animatedSprites[this.orientation].draw(this.pos.x, this.pos.y);
+        GeneratorPiece.animatedSprite.draw(this.pos.x, this.pos.y, this.orientation);
     }
 
 }

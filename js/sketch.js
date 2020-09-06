@@ -155,19 +155,14 @@ function setupSprites() {
     Button.inactiveSprite = new Sprite(mainSpritesheet, 304, 0, 22, 22);
     Button.activeSprite = new Sprite(mainSpritesheet, 336, 0, 22, 22);
 
-    CrossJunctionPiece.sprites = {
-        [Orientation.UP]: new Sprite(mainSpritesheet, 160, 0, 16, 16),
-        [Orientation.RIGHT]: new Sprite(mainSpritesheet, 160, 0, 16, 16),
-        [Orientation.DOWN]: new Sprite(mainSpritesheet, 160, 0, 16, 16),
-        [Orientation.LEFT]: new Sprite(mainSpritesheet, 160, 0, 16, 16),
-    };
+    CrossJunctionPiece.sprite = new Sprite(mainSpritesheet, 160, 0, 16, 16);
 
-    CurvePiece.sprites = {
+    CurvePiece.sprite = new OrientedSprite({
         [Orientation.UP]: new Sprite(mainSpritesheet, 48, 0, 16, 16),
         [Orientation.RIGHT]: new Sprite(mainSpritesheet, 64, 0, 16, 16),
         [Orientation.DOWN]: new Sprite(mainSpritesheet, 80, 0, 16, 16),
         [Orientation.LEFT]: new Sprite(mainSpritesheet, 32, 0, 16, 16)
-    };
+    });
 
     EmptyPiece.sprites = [
         new Sprite(mainSpritesheet, 256, 0, 16, 16),
@@ -175,33 +170,33 @@ function setupSprites() {
         new Sprite(mainSpritesheet, 256, 32, 16, 16)
     ];
 
-    EndPiece.sprites = {
+    EndPiece.sprite = new OrientedSprite({
         [Orientation.UP]: new Sprite(mainSpritesheet, 240, 0, 16, 16),
         [Orientation.RIGHT]: new Sprite(mainSpritesheet, 192, 0, 16, 16),
         [Orientation.DOWN]: new Sprite(mainSpritesheet, 208, 0, 16, 16),
         [Orientation.LEFT]: new Sprite(mainSpritesheet, 224, 0, 16, 16)
-    };
+    });
 
-    GeneratorPiece.sprites = {
+    GeneratorPiece.sprite = new OrientedSprite({
         [Orientation.UP]: new Sprite(mainSpritesheet, 512, 0, 16, 16),
         [Orientation.RIGHT]: new Sprite(mainSpritesheet, 464, 0, 16, 16),
         [Orientation.DOWN]: new Sprite(mainSpritesheet, 480, 0, 16, 16),
         [Orientation.LEFT]: new Sprite(mainSpritesheet, 496, 0, 16, 16)
-    };
+    });
 
-    GeneratorPiece.animatedSprites = {
-        [Orientation.UP]: new Sprite(mainSpritesheet, 512, 0, 16, 16, 4),
-        [Orientation.RIGHT]: new Sprite(mainSpritesheet, 464, 0, 16, 16, 4),
-        [Orientation.DOWN]: new Sprite(mainSpritesheet, 480, 0, 16, 16, 4),
-        [Orientation.LEFT]: new Sprite(mainSpritesheet, 496, 0, 16, 16, 4)
-    };
+    GeneratorPiece.animatedSprite = new OrientedSprite({
+        [Orientation.UP]: new AnimatedSprite(mainSpritesheet, 512, 0, 16, 16, 4),
+        [Orientation.RIGHT]: new AnimatedSprite(mainSpritesheet, 464, 0, 16, 16, 4),
+        [Orientation.DOWN]: new AnimatedSprite(mainSpritesheet, 480, 0, 16, 16, 4),
+        [Orientation.LEFT]: new AnimatedSprite(mainSpritesheet, 496, 0, 16, 16, 4)
+    });
 
-    JunctionPiece.sprites = {
+    JunctionPiece.sprite = new OrientedSprite({
         [Orientation.UP]: new Sprite(mainSpritesheet, 96, 0, 16, 16),
         [Orientation.RIGHT]: new Sprite(mainSpritesheet, 112, 0, 16, 16),
         [Orientation.DOWN]: new Sprite(mainSpritesheet, 128, 0, 16, 16),
         [Orientation.LEFT]: new Sprite(mainSpritesheet, 144, 0, 16, 16)
-    };
+    });
 
     SoundPiece.sprites = {
         [Instrument.PIANO]: new Sprite(mainSpritesheet, 528, 0, 16, 16),
@@ -211,11 +206,11 @@ function setupSprites() {
         [Instrument.DING]: new Sprite(mainSpritesheet, 592, 0, 16, 16),
     };
 
-    StraightPiece.sprites = {
+    StraightPiece.sprite = new OrientedSprite({
         [Orientation.UP]: new Sprite(mainSpritesheet, 16, 0, 16, 16),
         [Orientation.RIGHT]: new Sprite(mainSpritesheet, 0, 0, 16, 16),
         [Orientation.DOWN]: new Sprite(mainSpritesheet, 16, 0, 16, 16),
         [Orientation.LEFT]: new Sprite(mainSpritesheet, 0, 0, 16, 16),
-    };
+    });
 
 }

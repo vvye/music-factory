@@ -28,12 +28,12 @@ class Sidebar {
         ]
         this.buttons = [
             new Button(8, 66, 22, 22, () => new EmptyPiece(), new Sprite(mainSpritesheet, 368, 0, 16, 16)),
-            new OrientedButton(34, 66, 22, 22, () => new StraightPiece(this.pieceOrientation), StraightPiece.sprites),
-            new OrientedButton(60, 66, 22, 22, () => new CurvePiece(this.pieceOrientation), CurvePiece.sprites),
-            new OrientedButton(86, 66, 22, 22, () => new JunctionPiece(this.pieceOrientation), JunctionPiece.sprites),
-            new OrientedButton(8, 92, 22, 22, () => new CrossJunctionPiece(), CrossJunctionPiece.sprites),
-            new OrientedButton(34, 92, 22, 22, () => new EndPiece(this.pieceOrientation), EndPiece.sprites),
-            new OrientedButton(60, 92, 22, 22, () => new GeneratorPiece(this.pieceOrientation), GeneratorPiece.sprites),
+            new Button(34, 66, 22, 22, () => new StraightPiece(this.pieceOrientation), StraightPiece.sprite),
+            new Button(60, 66, 22, 22, () => new CurvePiece(this.pieceOrientation), CurvePiece.sprite),
+            new Button(86, 66, 22, 22, () => new JunctionPiece(this.pieceOrientation), JunctionPiece.sprite),
+            new Button(8, 92, 22, 22, () => new CrossJunctionPiece(), CrossJunctionPiece.sprite),
+            new Button(34, 92, 22, 22, () => new EndPiece(this.pieceOrientation), EndPiece.sprite),
+            new Button(60, 92, 22, 22, () => new GeneratorPiece(this.pieceOrientation), GeneratorPiece.sprite),
             new Button(86, 92, 22, 22, () => new SoundPiece(Instrument.PIANO), SoundPiece.sprites[Instrument.PIANO]),
             new Button(8, 118, 22, 22, () => new SoundPiece(Instrument.GUITAR), SoundPiece.sprites[Instrument.GUITAR]),
             new Button(34, 118, 22, 22, () => new SoundPiece(Instrument.FLUTE), SoundPiece.sprites[Instrument.FLUTE]),

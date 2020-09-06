@@ -1,6 +1,6 @@
 class JunctionPiece extends Piece {
 
-    static sprites;
+    static sprite;
 
     processedBalls;
 
@@ -85,7 +85,7 @@ class JunctionPiece extends Piece {
 
     draw() {
         Piece.backgroundSprite.draw(this.pos.x, this.pos.y);
-        JunctionPiece.sprites[this.orientation].draw(this.pos.x, this.pos.y);
+        JunctionPiece.sprite.draw(this.pos.x, this.pos.y, this.orientation);
     }
 
 }

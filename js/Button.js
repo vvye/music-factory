@@ -30,7 +30,7 @@ class Button {
         let sprite = this.active ? Button.activeSprite : Button.inactiveSprite;
         let yOffset = this.active ? 1 : 0;
         sprite.draw(baseX + this.pos.x, baseY + this.pos.y + yOffset);
-        this.labelSprite.draw(baseX + this.pos.x + 3, baseY + this.pos.y + yOffset + 3);
+        this.labelSprite.draw(baseX + this.pos.x + 3, baseY + this.pos.y + yOffset + 3, pieceOrientation);
     }
 
 }
