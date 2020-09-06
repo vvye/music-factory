@@ -1,5 +1,6 @@
 let board;
 let balls = [];
+let particles = [];
 let sounds;
 let mainSpritesheet;
 let logoSpritesheet;
@@ -59,6 +60,12 @@ function draw() {
         ball.draw();
     }
     balls = balls.filter(ball => !ball.dead);
+
+    for (let particle of particles) {
+        particle.update();
+        particle.draw();
+    }
+    particles = particles.filter(particle => particle.lifetime > 0);
 
     sidebar.draw();
 

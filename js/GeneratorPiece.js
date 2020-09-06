@@ -5,10 +5,12 @@ class GeneratorPiece extends Piece {
     static animatedSprite;
 
     orientation;
+    smokeTimeOffset;
 
     constructor(orientation) {
         super();
         this.orientation = orientation;
+        this.smokeTimeOffset = int(random(-32, 32));
     }
 
     update() {
@@ -29,6 +31,11 @@ class GeneratorPiece extends Piece {
                     break;
             }
             balls.push(newBall);
+        }
+        if (frameCount % (128 + this.smokeTimeOffset) === 0) {
+            let sprite = new SyncedAnimatedSprite(mainSpritesheet, 656, 0, 16, 16, 4);
+            particles.push(new Particle(this.pos.x + 6, this.pos.y, 0, -0.6, sprite));
+            this.smokeTimeOffset = int(random(-32, 32));
         }
     }
 

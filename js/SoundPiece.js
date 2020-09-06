@@ -13,6 +13,8 @@ class SoundPiece extends Piece {
     onBallEnter(ball) {
         random(sounds[this.instrument]).play();
         ball.die();
+        let sprite = new SyncedAnimatedSprite(mainSpritesheet, 640, 0, 16, 16, 4);
+        particles.push(new Particle(this.pos.x + 6, this.pos.y, 0, -1, sprite));
     }
 
     draw() {
