@@ -7,7 +7,7 @@ class Sidebar {
     pos;
     width;
     height;
-    buttons;
+    pieceButtons;
     toolbarButtons;
     pieceOrientation;
 
@@ -20,30 +20,34 @@ class Sidebar {
     }
 
     initButtons() {
+
+        let baseX = this.pos.x;
+        let baseY = this.pos.y;
+
         this.toolbarButtons = [
-            new ToolbarButton(23, 40, 16, 16, resetBoard, new Sprite(mainSpritesheet, 384, 0, 16, 16)),
-            new ToolbarButton(41, 40, 16, 16, this.rotatePiecesRight.bind(this), new Sprite(mainSpritesheet, 400, 0, 16, 16)),
-            new ToolbarButton(59, 40, 16, 16, this.zoomIn.bind(this), new Sprite(mainSpritesheet, 416, 0, 16, 16)),
-            new ToolbarButton(77, 40, 16, 16, this.zoomOut.bind(this), new Sprite(mainSpritesheet, 432, 0, 16, 16)),
+            new ToolbarButton(23 + baseX, 40 + baseY, 16, 16, resetBoard, new Sprite(mainSpritesheet, 384, 0, 16, 16)),
+            new ToolbarButton(41 + baseX, 40 + baseY, 16, 16, this.rotatePiecesRight.bind(this), new Sprite(mainSpritesheet, 400, 0, 16, 16)),
+            new ToolbarButton(59 + baseX, 40 + baseY, 16, 16, this.zoomIn.bind(this), new Sprite(mainSpritesheet, 416, 0, 16, 16)),
+            new ToolbarButton(77 + baseX, 40 + baseY, 16, 16, this.zoomOut.bind(this), new Sprite(mainSpritesheet, 432, 0, 16, 16)),
         ]
-        this.buttons = [
-            new Button(8, 66, 22, 22, () => new EmptyPiece(), new Sprite(mainSpritesheet, 368, 0, 16, 16)),
-            new Button(34, 66, 22, 22, () => new StraightPiece(this.pieceOrientation), StraightPiece.sprite),
-            new Button(60, 66, 22, 22, () => new CurvePiece(this.pieceOrientation), CurvePiece.sprite),
-            new Button(86, 66, 22, 22, () => new JunctionPiece(this.pieceOrientation), JunctionPiece.sprite),
-            new Button(8, 92, 22, 22, () => new CrossJunctionPiece(), CrossJunctionPiece.sprite),
-            new Button(34, 92, 22, 22, () => new EndPiece(this.pieceOrientation), EndPiece.sprite),
-            new Button(60, 92, 22, 22, () => new GeneratorPiece(this.pieceOrientation), GeneratorPiece.sprite),
-            new Button(86, 92, 22, 22, () => new SoundPiece(Instrument.PIANO), SoundPiece.sprites[Instrument.PIANO]),
-            new Button(8, 118, 22, 22, () => new SoundPiece(Instrument.GUITAR), SoundPiece.sprites[Instrument.GUITAR]),
-            new Button(34, 118, 22, 22, () => new SoundPiece(Instrument.FLUTE), SoundPiece.sprites[Instrument.FLUTE]),
-            new Button(60, 118, 22, 22, () => new SoundPiece(Instrument.DRUM), SoundPiece.sprites[Instrument.DRUM]),
-            new Button(86, 118, 22, 22, () => new SoundPiece(Instrument.DING), SoundPiece.sprites[Instrument.DING])
+        this.pieceButtons = [
+            new PieceButton(8 + baseX, 66 + baseY, 22, 22, () => new EmptyPiece(), new Sprite(mainSpritesheet, 368, 0, 16, 16)),
+            new PieceButton(34 + baseX, 66 + baseY, 22, 22, () => new StraightPiece(this.pieceOrientation), StraightPiece.sprite),
+            new PieceButton(60 + baseX, 66 + baseY, 22, 22, () => new CurvePiece(this.pieceOrientation), CurvePiece.sprite),
+            new PieceButton(86 + baseX, 66 + baseY, 22, 22, () => new JunctionPiece(this.pieceOrientation), JunctionPiece.sprite),
+            new PieceButton(8 + baseX, 92 + baseY, 22, 22, () => new CrossJunctionPiece(), CrossJunctionPiece.sprite),
+            new PieceButton(34 + baseX, 92 + baseY, 22, 22, () => new EndPiece(this.pieceOrientation), EndPiece.sprite),
+            new PieceButton(60 + baseX, 92 + baseY, 22, 22, () => new GeneratorPiece(this.pieceOrientation), GeneratorPiece.sprite),
+            new PieceButton(86 + baseX, 92 + baseY, 22, 22, () => new SoundPiece(Instrument.PIANO), SoundPiece.sprites[Instrument.PIANO]),
+            new PieceButton(8 + baseX, 118 + baseY, 22, 22, () => new SoundPiece(Instrument.GUITAR), SoundPiece.sprites[Instrument.GUITAR]),
+            new PieceButton(34 + baseX, 118 + baseY, 22, 22, () => new SoundPiece(Instrument.FLUTE), SoundPiece.sprites[Instrument.FLUTE]),
+            new PieceButton(60 + baseX, 118 + baseY, 22, 22, () => new SoundPiece(Instrument.DRUM), SoundPiece.sprites[Instrument.DRUM]),
+            new PieceButton(86 + baseX, 118 + baseY, 22, 22, () => new SoundPiece(Instrument.DING), SoundPiece.sprites[Instrument.DING])
         ];
     }
 
     pieceToPlace() {
-        for (let button of this.buttons) {
+        for (let button of this.pieceButtons) {
             if (button.active) {
                 return button.associatedPiece();
             }
@@ -52,7 +56,9 @@ class Sidebar {
     }
 
     draw() {
+
         cursor('default');
+
         for (let y = 0; y < this.height; y += 16) {
             for (let x = 0; x < this.width; x += 16) {
                 Sidebar.backgroundSprite.draw(this.pos.x + x, this.pos.y + y);
@@ -60,14 +66,16 @@ class Sidebar {
             Sidebar.borderSprite.draw(this.pos.x - 8, this.pos.y + y);
         }
         Sidebar.logoSprite.draw(this.pos.x + 14, this.pos.y + 4);
-        for (let button of this.buttons) {
-            if (button.hovered(this.pos.x, this.pos.y)) {
+
+        for (let button of this.pieceButtons) {
+            if (button.hovered()) {
                 cursor(HAND);
             }
             button.draw(this.pos.x, this.pos.y, this.pieceOrientation);
         }
+
         for (let button of this.toolbarButtons) {
-            if (button.hovered(this.pos.x, this.pos.y)) {
+            if (button.hovered()) {
                 cursor(HAND);
             }
             button.draw(this.pos.x, this.pos.y);
@@ -84,13 +92,13 @@ class Sidebar {
             return;
         }
         for (let toolbarButton of this.toolbarButtons) {
-            if (toolbarButton.hovered(this.pos.x, this.pos.y)) {
+            if (toolbarButton.hovered()) {
                 toolbarButton.actionFunction();
                 return;
             }
         }
-        for (let button of this.buttons) {
-            button.active = button.hovered(this.pos.x, this.pos.y) && !button.active;
+        for (let button of this.pieceButtons) {
+            button.active = button.hovered() && !button.active;
         }
     }
 

@@ -152,8 +152,8 @@ function setupSprites() {
     Sidebar.borderSprite = new Sprite(mainSpritesheet, 288, 0, 16, 16);
     Sidebar.logoSprite = new Sprite(logoSpritesheet, 0, 0, 87, 29);
 
-    Button.inactiveSprite = new Sprite(mainSpritesheet, 304, 0, 22, 22);
-    Button.activeSprite = new Sprite(mainSpritesheet, 336, 0, 22, 22);
+    PieceButton.inactiveSprite = new Sprite(mainSpritesheet, 304, 0, 22, 22);
+    PieceButton.activeSprite = new Sprite(mainSpritesheet, 336, 0, 22, 22);
 
     CrossJunctionPiece.sprite = new Sprite(mainSpritesheet, 160, 0, 16, 16);
 
