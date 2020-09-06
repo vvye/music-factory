@@ -15,7 +15,17 @@ class CrossJunctionPiece extends Piece {
         }
         if (this.ballNearCenter(ball)) {
             this.setBallToCenter(ball);
-            random([ball.moveDown, ball.moveUp, ball.moveLeft, ball.moveRight]).bind(ball)();
+
+            if (ball.movingUp()) {
+                random([ball.moveUp, ball.moveLeft, ball.moveRight]).bind(ball)();
+            } else if (ball.movingLeft()) {
+                random([ball.moveDown, ball.moveUp, ball.moveLeft]).bind(ball)();
+            } else if (ball.movingDown()) {
+                random([ball.moveDown, ball.moveLeft, ball.moveRight]).bind(ball)();
+            } else {
+                random([ball.moveDown, ball.moveUp, ball.moveRight]).bind(ball)();
+            }
+
             this.processedBalls.push(ball.id);
         }
     }
