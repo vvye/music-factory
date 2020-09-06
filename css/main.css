@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    text-align: center;
+    background-color: #0f0505;
+    color: #dbd2c3;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    color: #e5ac86;
+}
+
+p {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+canvas {
+    margin: 4rem 0 2rem;
+    border: 0.5rem solid #d87;
+    box-shadow: #794343 0 0.5rem 0;
+}
+
+#p5_loading {
+    position: static !important;
+    display: block;
+    margin: 2rem auto;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+#p5_loading::after {
+    display: block;
+    content: 'If this doesn\'t disappear, try refreshing the page.';
+    font-size: 1rem;
+    margin-top: 1rem;
+}

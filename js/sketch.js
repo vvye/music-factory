@@ -29,6 +29,7 @@ function preload() {
 function setup() {
 
     let canvas = createCanvas((board.width() + sidebar.width) * scaleFactor, (max(board.height(), sidebar.height)) * scaleFactor);
+    canvas.parent('main-section');
     let context = canvas.elt.getContext('2d');
     context.imageSmoothingEnabled = false;
     context.mozImageSmoothingEnabled = false;
