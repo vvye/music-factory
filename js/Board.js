@@ -87,7 +87,7 @@ class Board {
                                 i++;
                                 break;
                             case CurvePiece.code:
-                                orientation = (repr[i + 1]) ?? 0;
+                                orientation = int(repr[i + 1]) ?? 0;
                                 piece = new CurvePiece(orientation);
                                 i += 2;
                                 break;
