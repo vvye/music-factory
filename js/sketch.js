@@ -91,6 +91,7 @@ function resetBoard() {
 
     board = new Board(9, 12, 16);
     balls = [];
+    particles = [];
 
 }
 
