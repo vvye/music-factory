@@ -82,6 +82,17 @@ class Sidebar {
             }
             button.draw(this.pos.x, this.pos.y);
         }
+
+        if (!this.hovered()) {
+            let activeButton = this.activeButton();
+            if (activeButton) {
+                let x = mouseX / scaleFactor - 8;
+                let y = mouseY / scaleFactor - 8;
+                tint(255, 128);
+                activeButton.labelSprite.draw(x, y, this.pieceOrientation);
+                noTint();
+            }
+        }
     }
 
     hovered() {
@@ -106,6 +117,15 @@ class Sidebar {
 
     rotatePiecesRight() {
         this.pieceOrientation = (this.pieceOrientation + 1) % 4;
+    }
+
+    activeButton() {
+        for (let button of this.pieceButtons) {
+            if (button.active) {
+                return button;
+            }
+        }
+        return null;
     }
 
 }
