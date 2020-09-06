@@ -25,10 +25,12 @@ class Sidebar {
         let baseY = this.pos.y;
 
         this.toolbarButtons = [
-            new ToolbarButton(23 + baseX, 40 + baseY, 16, 16, resetBoard, new Sprite(mainSpritesheet, 384, 0, 16, 16)),
-            new ToolbarButton(41 + baseX, 40 + baseY, 16, 16, this.rotatePiecesRight.bind(this), new Sprite(mainSpritesheet, 400, 0, 16, 16)),
-            new ToolbarButton(59 + baseX, 40 + baseY, 16, 16, this.zoomIn.bind(this), new Sprite(mainSpritesheet, 416, 0, 16, 16)),
-            new ToolbarButton(77 + baseX, 40 + baseY, 16, 16, this.zoomOut.bind(this), new Sprite(mainSpritesheet, 432, 0, 16, 16)),
+            new ToolbarButton(8 + baseX, 40 + baseY, 16, 16, resetBoard, new Sprite(mainSpritesheet, 384, 0, 16, 16)),
+            new ToolbarButton(26 + baseX, 40 + baseY, 16, 16, saveBoard, new Sprite(mainSpritesheet, 608, 0, 16, 16)),
+            new ToolbarButton(41 + baseX, 40 + baseY, 16, 16, loadBoard, new Sprite(mainSpritesheet, 624, 0, 16, 16)),
+            new ToolbarButton(59 + baseX, 40 + baseY, 16, 16, this.rotatePiecesRight.bind(this), new Sprite(mainSpritesheet, 400, 0, 16, 16)),
+            new ToolbarButton(77 + baseX, 40 + baseY, 16, 16, this.zoomIn.bind(this), new Sprite(mainSpritesheet, 416, 0, 16, 16)),
+            new ToolbarButton(92 + baseX, 40 + baseY, 16, 16, this.zoomOut.bind(this), new Sprite(mainSpritesheet, 432, 0, 16, 16)),
         ]
         this.pieceButtons = [
             new PieceButton(8 + baseX, 66 + baseY, 22, 22, () => new EmptyPiece(), new Sprite(mainSpritesheet, 368, 0, 16, 16)),

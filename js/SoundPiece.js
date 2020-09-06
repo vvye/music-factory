@@ -1,5 +1,6 @@
 class SoundPiece extends Piece {
 
+    static code = 's';
     static sprites;
 
     instrument;

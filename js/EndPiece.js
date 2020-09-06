@@ -1,5 +1,6 @@
 class EndPiece extends Piece {
 
+    static code = 'e';
     static sprite;
 
     processedBalls;

@@ -1,5 +1,6 @@
 class CurvePiece extends Piece {
 
+    static code = 'c';
     static sprite;
 
     processedBalls;

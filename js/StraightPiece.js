@@ -1,5 +1,6 @@
 class StraightPiece extends Piece {
 
+    static code = 't';
     static sprite;
 
     orientation;

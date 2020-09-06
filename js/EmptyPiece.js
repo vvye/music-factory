@@ -1,5 +1,6 @@
 class EmptyPiece extends Piece {
 
+    static code = '_';
     static sprites;
 
     sprite;

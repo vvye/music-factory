@@ -1,5 +1,6 @@
 class GeneratorPiece extends Piece {
 
+    static code = 'g';
     static sprite;
     static animatedSprite;
 

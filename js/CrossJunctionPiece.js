@@ -1,5 +1,6 @@
 class CrossJunctionPiece extends Piece {
 
+    static code = 'x';
     static sprite;
 
     processedBalls;

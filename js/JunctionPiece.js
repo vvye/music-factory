@@ -1,5 +1,6 @@
 class JunctionPiece extends Piece {
 
+    static code = 'j';
     static sprite;
 
     processedBalls;
